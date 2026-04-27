@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cameron B. Chiarot - Evaluation & Links</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --uwaterloo-gold: #FFD54F;
@@ -28,6 +31,20 @@
 
         .profile-header {
             margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* New Profile Picture Styling */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid #eaeaea;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .profile-name {
@@ -43,6 +60,15 @@
             font-weight: 400;
         }
 
+        /* New Welcome Message Styling */
+        .welcome-message {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            max-width: 380px;
+            margin: 15px auto 0 auto;
+            line-height: 1.5;
+        }
+
         .hero-button {
             display: inline-block;
             background-color: var(--uwaterloo-black);
@@ -55,55 +81,62 @@
             width: 100%;
             max-width: 320px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
             margin-bottom: 40px;
         }
 
         .hero-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             background-color: #000000;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
+        /* Updated to a horizontal layout */
         .secondary-links {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 35px; /* Spacing between the icons */
             width: 100%;
             max-width: 320px;
         }
 
-        .link-item {
+        /* Updated from text to icon styling */
+        .icon-link {
             color: var(--text-gray);
+            font-size: 1.6rem;
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 10px;
-            border-bottom: 1px solid #eaeaea;
-            transition: color 0.2s ease;
+            transition: color 0.2s ease, transform 0.2s ease;
         }
 
-        .link-item:hover {
+        .icon-link:hover {
             color: var(--uwaterloo-black);
-            border-bottom: 1px solid var(--uwaterloo-black);
-        }
-
-        .link-item:last-child {
-            border-bottom: none;
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
 
     <div class="profile-header">
+        <img src="images/cbc_07ix25.jpeg" alt="Dr. Cameron B. Chiarot" class="profile-pic">
         <h1 class="profile-name">Dr. Cameron B. Chiarot</h1>
         <p class="profile-title">Health Economist | Epidemiologist | Biostatistician</p>
+        <p class="welcome-message">Thank you for your attention and participating in my guest lecture on creating value in healthcare.</p>
     </div>
     
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1ALjZToCsC82d3UFOZrt-I-F3-1MHfOCSc22TJOGhAsJ2Rw/viewform?usp=sf_link" class="hero-button" target="_blank">Guest Lecture Evaluation</a>
+    
     <div class="secondary-links">
-        <a href="bio.html" class="link-item">Biography & Research Focus</a>
-        <a href="https://uwaterloo.ca/public-health-research-analytics-lab/profiles/cameron-b-chiarot" class="link-item" target="_blank">University of Waterloo</a>
-        <a href="https://www.linkedin.com/in/cameronchiarot" class="link-item" target="_blank">LinkedIn</a>
+        <a href="bio.html" class="icon-link" title="Biography & Research Focus">
+            <i class="fa-regular fa-file-lines"></i>
+        </a>
+        <a href="https://uwaterloo.ca/public-health-research-analytics-lab/profiles/cameron-b-chiarot" class="icon-link" title="University of Waterloo" target="_blank">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/cameronchiarot" class="icon-link" title="LinkedIn" target="_blank">
+            <i class="fa-brands fa-linkedin-in"></i>
+        </a>
     </div>
 
 </body>
