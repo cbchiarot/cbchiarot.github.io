@@ -66,18 +66,29 @@
             margin-bottom: 40px;
         }
 
+        /* Button Layout Wrapper */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px; /* Creates clean vertical space between the stacked buttons */
+        }
+
         /* Schulich-Branded Action Button */
         .btn-review {
             display: inline-block;
+            width: 80%; /* Standardizes the width across both buttons for clean visual balance */
+            max-width: 320px;
             background-color: #0062AC; /* Official Schulich Blue Hex */
             color: #ffffff;
             text-decoration: none;
             font-size: 1.1rem;
             font-weight: 600;
-            padding: 16px 32px;
+            padding: 16px 24px;
             border-radius: 6px;
             transition: background-color 0.2s ease, transform 0.1s ease;
             box-shadow: 0 4px 6px rgba(0, 98, 172, 0.2);
+            box-sizing: border-box;
         }
 
         .btn-review:hover {
@@ -103,9 +114,17 @@
             <p>Driven by an applied <strong>Code-Along Philosophy</strong> utilizing R/RStudio, the curriculum equips upcoming leaders to transform complex healthcare datasets into evidence-based insights for health system resilience.</p>
         </div>
 
-        <a href="mhia6160_outline_w27.pdf" target="_blank" class="btn-review">
-            Review Draft Course Outline
-        </a>
+        <!-- Grouped Button Core Section -->
+        <div class="button-group">
+            <a href="mhia6160_outline_w27.pdf" target="_blank" class="btn-review">
+                Review Draft Course Outline
+            </a>
+            
+            <!-- New Week 1 Lab Button Placement -->
+            <a href="week1_r_laboratory.html" target="_blank" class="btn-review">
+                Review Week 1 R-Laboratory
+            </a>
+        </div>
     </div>
 
 </body>
