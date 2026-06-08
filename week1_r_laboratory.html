@@ -2435,6 +2435,66 @@ border-radius: 4px;
 <section id="part-ii-the-r-building-blocks" class="level2">
 <h2 class="anchored" data-anchor-id="part-ii-the-r-building-blocks">Part II: The R Building Blocks</h2>
 <p>To transition away from manual spreadsheet clicking, we must understand the four basic rules that govern how <code>R</code> processes data. Open your raw script file <code>module_1_foundations.R</code> inside your <code>RStudio Project</code> ecosystem and code along with the sections below.</p>
+<section id="programmatic-vocabulary-syntax-key" class="level3">
+<h3 class="anchored" data-anchor-id="programmatic-vocabulary-syntax-key">🔑 Programmatic Vocabulary &amp; Syntax Key</h3>
+<p><em>Instructors Note: Think of these symbols as the punctuation marks of data engineering. Before we write full data assembly lines, use this table as your foundational grammar guide.</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol / Operator</th>
+<th>Official Name</th>
+<th>What It Tells R To Do (Administrative Definition)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>&lt;-</code></strong></td>
+<td><strong>Assignment Operator</strong></td>
+<td>Stash the data on the right inside the object container name on the left. <em>(e.g., <code>patient_age &lt;- 65</code>)</em></td>
+</tr>
+<tr class="even">
+<td><strong><code>%&gt;%</code></strong> or <strong><code>|&gt;</code></strong></td>
+<td><strong>The Pipe</strong></td>
+<td>Take the output of the line above it and pass it directly into the first argument of the next line. Read this out loud as <strong>“And Then…”</strong></td>
+</tr>
+<tr class="odd">
+<td><strong><code>$</code></strong></td>
+<td><strong>The Vector Explode / Extractor</strong></td>
+<td>Reach inside a data frame object and grab one single, isolated column vector by its header name. <em>(e.g., <code>raw_data$Age</code>)</em></td>
+</tr>
+<tr class="even">
+<td><strong><code>==</code></strong></td>
+<td><strong>Logical Equality</strong></td>
+<td>Evaluate row-by-row whether two elements are an exact match. <em>(Remember: a single <code>=</code> sets parameters, a double <code>==</code> asks a question).</em></td>
+</tr>
+<tr class="odd">
+<td><strong><code>!=</code></strong></td>
+<td><strong>Logical Inequality</strong></td>
+<td>Evaluate row-by-row whether elements do <strong>NOT</strong> match.</td>
+</tr>
+<tr class="even">
+<td><strong><code>&amp;</code></strong></td>
+<td><strong>Logical AND</strong></td>
+<td>Enforce a hard constraint where <strong>both</strong> clinical conditions must be <code>TRUE</code> simultaneously for a row to pass through.</td>
+</tr>
+<tr class="odd">
+<td><strong><code>c(...)</code></strong></td>
+<td><strong>Combine / Concatenate Function</strong></td>
+<td>Glue individual data cells or strings together into a single, unified vector list. <em>(e.g., creating our age cohort list).</em></td>
+</tr>
+<tr class="even">
+<td><strong><code>#</code></strong></td>
+<td><strong>The Comment Flag</strong></td>
+<td>Tell the computer to completely ignore this line. This is reserved strictly for human annotating, documentation, and auditing.</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="building-bock-1-the-assignment-operator--" class="level3">
 <h3 class="anchored" data-anchor-id="building-bock-1-the-assignment-operator--">Building Bock 1: The Assignment Operator (<code>&lt;-</code>)</h3>
 <p>In Excel, data is permanently bound to a specific grid cell (like <code>B4</code>). In <code>R</code>, we store data inside a named, flexible <code>object</code> using the assignment arrow (<code>&lt;-</code>). Think of this as placing data inside a labeled container on an executive asset shelf.</p>
@@ -2497,9 +2557,52 @@ border-radius: 4px;
 </section>
 <section id="part-iii-the-preprocessing-pipeline" class="level2">
 <h2 class="anchored" data-anchor-id="part-iii-the-preprocessing-pipeline">Part III: The Preprocessing Pipeline</h2>
-<p>Data preprocessing consumes up to <strong>80% of any healthcare analytics project</strong>. We will now utilize the <code>medicaldata</code> library to build an automated, fully reproducible cleaning pipeline that transforms a raw, messy dataset into an executive matrix.</p>
+<section id="the-conceptual-core-value-based-healthcare-framework" class="level3">
+<h3 class="anchored" data-anchor-id="the-conceptual-core-value-based-healthcare-framework">🏛️ The Conceptual Core: Value-Based Healthcare Framework</h3>
+<p>Before launching into our active data assembly line, we must anchor our analytics in the formal administrative framework of Value-Based Healthcare (VBHC). As a health leader, your goal is not merely to track clinical volumes or cut isolated departmental costs, but to maximize the strategic “return on investment” across full cycles of patient care.</p>
+<section id="the-formal-definition-of-value" class="level4">
+<h4 class="anchored" data-anchor-id="the-formal-definition-of-value">The Formal Definition of Value</h4>
+<p>In a value-based ecosystem, <strong>Value</strong> is defined as the health outcomes achieved per dollar expended to deliver that care. It is an objective utility score that forces administrators to look at clinical outcomes and financial resource consumption simultaneously, rather than as separate, competing silos.</p>
+</section>
+<section id="the-theoretical-vs.-operational-formula" class="level4">
+<h4 class="anchored" data-anchor-id="the-theoretical-vs.-operational-formula">The Theoretical vs. Operational Formula</h4>
+<p>In your lecture slides, Michael Porter’s core value framework is defined mathematically as:</p>
+<p><span class="math display">\[\text{Value} = \frac{\text{Health Outcomes (Patient-Centered)}}{\text{Total Cost of Care (Full Care Cycle)}}\]</span></p>
+<p>Because real-world healthcare databases rarely contain explicit financial ledger dollar figures in their clinical tables, operational analysts use <strong>Validated Proxies</strong>, which are substitute clinical metrics that directly correlate with resource consumption and therapeutic milestones.</p>
+<p>In the <strong>Week 1 R Laboratory</strong>, we operationalize this macro equation using specific variables from our prostate oncology database:</p>
+<p><span class="math display">\[\text{Healthcare Value Index} = \frac{\text{Months to Recurrence (Outcome Proxy)}}{\text{Baseline PSA (Clinical Burden or Cost Proxy)}}\]</span></p>
+</section>
+<section id="variable-blueprint-directory" class="level4">
+<h4 class="anchored" data-anchor-id="variable-blueprint-directory">Variable Blueprint Directory</h4>
+<p>To map our dataset’s raw database headers to this value calculation, understand how each component functions administratively:</p>
+<section id="numerator-months_to_return-timetorecurrence" class="level5">
+<h5 class="anchored" data-anchor-id="numerator-months_to_return-timetorecurrence"><strong>Numerator: <code>months_to_return</code> (<code>TimeToRecurrence</code>)</strong></h5>
+<ol type="1">
+<li><p><em>Administrative Definition:</em> The total duration of time (measured in months) a patient remains completely free of disease following surgical intervention.</p></li>
+<li><p><em>Strategic Utility:</em> This is our <strong>Positive Outcome Proxy</strong>. A higher number indicates superior care utility, effective clinical execution, and extended patient disease-free survival.</p></li>
+</ol>
+</section>
+<section id="denominator-baseline_psa-preoppsa" class="level5">
+<h5 class="anchored" data-anchor-id="denominator-baseline_psa-preoppsa"><strong>Denominator: <code>baseline_psa</code> (<code>PreopPSA</code>)</strong></h5>
+<ol type="1">
+<li><p><em>Administrative Definition:</em> The patient’s preoperative Prostate-Specific Antigen blood laboratory count (measured in ng/mL).</p></li>
+<li><p><em>Strategic Utility:</em> This is our <strong>Clinical Burden &amp; Cost Proxy</strong>. High baseline PSA levels signal aggressive disease staging, significantly higher surgical complexity, extensive post-operative tracking, and an elevated downstream risk profile. In short, a higher baseline PSA directly drives higher operational intensity and aggregate care cycle costs.</p></li>
+</ol>
+</section>
+</section>
+<section id="strategic-target-what-we-are-auditing-in-the-output" class="level4">
+<h4 class="anchored" data-anchor-id="strategic-target-what-we-are-auditing-in-the-output">Strategic Target: What We Are Auditing in the Output</h4>
+<p>When your final code pipelines render their data matrices, you are trained to look for specific mathematical thresholds to guide executive policy:</p>
+<ol type="1">
+<li><p><strong>A High Value Index Score (<span class="math inline">\(\ge 2.00\)</span>):</strong> Indicates an <strong>Optimized Care Pathway</strong>. The system is successfully buying a long runway of disease-free survival relative to the patient’s initial entry complexity. This signals efficient resource utilization.</p></li>
+<li><p><strong>A Low Value Index Score (<span class="math inline">\(&lt; 1.00\)</span>):</strong> Indicates an <strong>Operational Friction Point</strong>. The care pathway is yielding very few disease-free months despite drawing heavily on system resources to manage a high baseline burden.</p></li>
+</ol>
+<p>Your job as an administrator is to programmatically surface these low-value cohorts, audit their clinical pathways, and reallocate specialized institutional support to pull their value scores upward.</p>
+</section>
+</section>
 <section id="code-along-instructions" class="level3">
 <h3 class="anchored" data-anchor-id="code-along-instructions">Code-Along Instructions</h3>
+<p>Data preprocessing consumes up to <strong>80% of any healthcare analytics project</strong>. We will now utilize the <code>medicaldata</code> library to build an automated, fully reproducible cleaning pipeline that transforms a raw, messy dataset into an executive matrix.</p>
 <p>Copy the code pipeline below into your script file:</p>
 <div class="cell">
 <details class="code-fold">
@@ -2582,20 +2685,20 @@ border-radius: 4px;
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="ivecignwel" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ivecignwel table {
+<div id="dapnoyqwzn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dapnoyqwzn table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#ivecignwel thead, #ivecignwel tbody, #ivecignwel tfoot, #ivecignwel tr, #ivecignwel td, #ivecignwel th {
+#dapnoyqwzn thead, #dapnoyqwzn tbody, #dapnoyqwzn tfoot, #dapnoyqwzn tr, #dapnoyqwzn td, #dapnoyqwzn th {
 border-style: none;
 }
-#ivecignwel p {
+#dapnoyqwzn p {
 margin: 0;
 padding: 0;
 }
-#ivecignwel .gt_table {
+#dapnoyqwzn .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -2620,11 +2723,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#ivecignwel .gt_caption {
+#dapnoyqwzn .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#ivecignwel .gt_title {
+#dapnoyqwzn .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -2635,7 +2738,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#ivecignwel .gt_subtitle {
+#dapnoyqwzn .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -2646,7 +2749,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#ivecignwel .gt_heading {
+#dapnoyqwzn .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -2657,12 +2760,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ivecignwel .gt_bottom_border {
+#dapnoyqwzn .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ivecignwel .gt_col_headings {
+#dapnoyqwzn .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -2676,7 +2779,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ivecignwel .gt_col_heading {
+#dapnoyqwzn .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2695,7 +2798,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#ivecignwel .gt_column_spanner_outer {
+#dapnoyqwzn .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2706,13 +2809,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#ivecignwel .gt_column_spanner_outer:first-child {
+#dapnoyqwzn .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#ivecignwel .gt_column_spanner_outer:last-child {
+#dapnoyqwzn .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#ivecignwel .gt_column_spanner {
+#dapnoyqwzn .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -2723,10 +2826,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#ivecignwel .gt_spanner_row {
+#dapnoyqwzn .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#ivecignwel .gt_group_heading {
+#dapnoyqwzn .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2751,7 +2854,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#ivecignwel .gt_empty_group_heading {
+#dapnoyqwzn .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -2765,13 +2868,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#ivecignwel .gt_from_md > :first-child {
+#dapnoyqwzn .gt_from_md > :first-child {
 margin-top: 0;
 }
-#ivecignwel .gt_from_md > :last-child {
+#dapnoyqwzn .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#ivecignwel .gt_row {
+#dapnoyqwzn .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2789,7 +2892,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#ivecignwel .gt_stub {
+#dapnoyqwzn .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2801,7 +2904,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivecignwel .gt_stub_row_group {
+#dapnoyqwzn .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2814,13 +2917,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#ivecignwel .gt_row_group_first td {
+#dapnoyqwzn .gt_row_group_first td {
 border-top-width: 2px;
 }
-#ivecignwel .gt_row_group_first th {
+#dapnoyqwzn .gt_row_group_first th {
 border-top-width: 2px;
 }
-#ivecignwel .gt_summary_row {
+#dapnoyqwzn .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -2829,14 +2932,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivecignwel .gt_first_summary_row {
+#dapnoyqwzn .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#ivecignwel .gt_first_summary_row.thick {
+#dapnoyqwzn .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#ivecignwel .gt_last_summary_row {
+#dapnoyqwzn .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2845,7 +2948,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ivecignwel .gt_grand_summary_row {
+#dapnoyqwzn .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -2854,7 +2957,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivecignwel .gt_first_grand_summary_row {
+#dapnoyqwzn .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2863,7 +2966,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#ivecignwel .gt_last_grand_summary_row_top {
+#dapnoyqwzn .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2872,10 +2975,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#ivecignwel .gt_striped {
+#dapnoyqwzn .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#ivecignwel .gt_table_body {
+#dapnoyqwzn .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -2883,7 +2986,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ivecignwel .gt_footnotes {
+#dapnoyqwzn .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -2896,7 +2999,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ivecignwel .gt_footnote {
+#dapnoyqwzn .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -2904,7 +3007,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivecignwel .gt_sourcenotes {
+#dapnoyqwzn .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -2917,64 +3020,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ivecignwel .gt_sourcenote {
+#dapnoyqwzn .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ivecignwel .gt_left {
+#dapnoyqwzn .gt_left {
 text-align: left;
 }
-#ivecignwel .gt_center {
+#dapnoyqwzn .gt_center {
 text-align: center;
 }
-#ivecignwel .gt_right {
+#dapnoyqwzn .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#ivecignwel .gt_font_normal {
+#dapnoyqwzn .gt_font_normal {
 font-weight: normal;
 }
-#ivecignwel .gt_font_bold {
+#dapnoyqwzn .gt_font_bold {
 font-weight: bold;
 }
-#ivecignwel .gt_font_italic {
+#dapnoyqwzn .gt_font_italic {
 font-style: italic;
 }
-#ivecignwel .gt_super {
+#dapnoyqwzn .gt_super {
 font-size: 65%;
 }
-#ivecignwel .gt_footnote_marks {
+#dapnoyqwzn .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#ivecignwel .gt_asterisk {
+#dapnoyqwzn .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#ivecignwel .gt_indent_1 {
+#dapnoyqwzn .gt_indent_1 {
 text-indent: 5px;
 }
-#ivecignwel .gt_indent_2 {
+#dapnoyqwzn .gt_indent_2 {
 text-indent: 10px;
 }
-#ivecignwel .gt_indent_3 {
+#dapnoyqwzn .gt_indent_3 {
 text-indent: 15px;
 }
-#ivecignwel .gt_indent_4 {
+#dapnoyqwzn .gt_indent_4 {
 text-indent: 20px;
 }
-#ivecignwel .gt_indent_5 {
+#dapnoyqwzn .gt_indent_5 {
 text-indent: 25px;
 }
-#ivecignwel .katex-display {
+#dapnoyqwzn .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#ivecignwel div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dapnoyqwzn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -3124,20 +3227,20 @@ height: 0px !important;
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="vghzhwsrtp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vghzhwsrtp table {
+<div id="vsuxgkynlu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vsuxgkynlu table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#vghzhwsrtp thead, #vghzhwsrtp tbody, #vghzhwsrtp tfoot, #vghzhwsrtp tr, #vghzhwsrtp td, #vghzhwsrtp th {
+#vsuxgkynlu thead, #vsuxgkynlu tbody, #vsuxgkynlu tfoot, #vsuxgkynlu tr, #vsuxgkynlu td, #vsuxgkynlu th {
 border-style: none;
 }
-#vghzhwsrtp p {
+#vsuxgkynlu p {
 margin: 0;
 padding: 0;
 }
-#vghzhwsrtp .gt_table {
+#vsuxgkynlu .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -3162,11 +3265,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_caption {
+#vsuxgkynlu .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#vghzhwsrtp .gt_title {
+#vsuxgkynlu .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -3177,7 +3280,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#vghzhwsrtp .gt_subtitle {
+#vsuxgkynlu .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -3188,7 +3291,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#vghzhwsrtp .gt_heading {
+#vsuxgkynlu .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -3199,12 +3302,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_bottom_border {
+#vsuxgkynlu .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_col_headings {
+#vsuxgkynlu .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3218,7 +3321,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_col_heading {
+#vsuxgkynlu .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3237,7 +3340,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#vghzhwsrtp .gt_column_spanner_outer {
+#vsuxgkynlu .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3248,13 +3351,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#vghzhwsrtp .gt_column_spanner_outer:first-child {
+#vsuxgkynlu .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#vghzhwsrtp .gt_column_spanner_outer:last-child {
+#vsuxgkynlu .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#vghzhwsrtp .gt_column_spanner {
+#vsuxgkynlu .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -3265,10 +3368,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#vghzhwsrtp .gt_spanner_row {
+#vsuxgkynlu .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#vghzhwsrtp .gt_group_heading {
+#vsuxgkynlu .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3293,7 +3396,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#vghzhwsrtp .gt_empty_group_heading {
+#vsuxgkynlu .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -3307,13 +3410,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#vghzhwsrtp .gt_from_md > :first-child {
+#vsuxgkynlu .gt_from_md > :first-child {
 margin-top: 0;
 }
-#vghzhwsrtp .gt_from_md > :last-child {
+#vsuxgkynlu .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#vghzhwsrtp .gt_row {
+#vsuxgkynlu .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3331,7 +3434,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#vghzhwsrtp .gt_stub {
+#vsuxgkynlu .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3343,7 +3446,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vghzhwsrtp .gt_stub_row_group {
+#vsuxgkynlu .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3356,13 +3459,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#vghzhwsrtp .gt_row_group_first td {
+#vsuxgkynlu .gt_row_group_first td {
 border-top-width: 2px;
 }
-#vghzhwsrtp .gt_row_group_first th {
+#vsuxgkynlu .gt_row_group_first th {
 border-top-width: 2px;
 }
-#vghzhwsrtp .gt_summary_row {
+#vsuxgkynlu .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3371,14 +3474,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vghzhwsrtp .gt_first_summary_row {
+#vsuxgkynlu .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_first_summary_row.thick {
+#vsuxgkynlu .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#vghzhwsrtp .gt_last_summary_row {
+#vsuxgkynlu .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3387,7 +3490,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_grand_summary_row {
+#vsuxgkynlu .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3396,7 +3499,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vghzhwsrtp .gt_first_grand_summary_row {
+#vsuxgkynlu .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3405,7 +3508,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_last_grand_summary_row_top {
+#vsuxgkynlu .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3414,10 +3517,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_striped {
+#vsuxgkynlu .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#vghzhwsrtp .gt_table_body {
+#vsuxgkynlu .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3425,7 +3528,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_footnotes {
+#vsuxgkynlu .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3438,7 +3541,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_footnote {
+#vsuxgkynlu .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -3446,7 +3549,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vghzhwsrtp .gt_sourcenotes {
+#vsuxgkynlu .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3459,64 +3562,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#vghzhwsrtp .gt_sourcenote {
+#vsuxgkynlu .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vghzhwsrtp .gt_left {
+#vsuxgkynlu .gt_left {
 text-align: left;
 }
-#vghzhwsrtp .gt_center {
+#vsuxgkynlu .gt_center {
 text-align: center;
 }
-#vghzhwsrtp .gt_right {
+#vsuxgkynlu .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#vghzhwsrtp .gt_font_normal {
+#vsuxgkynlu .gt_font_normal {
 font-weight: normal;
 }
-#vghzhwsrtp .gt_font_bold {
+#vsuxgkynlu .gt_font_bold {
 font-weight: bold;
 }
-#vghzhwsrtp .gt_font_italic {
+#vsuxgkynlu .gt_font_italic {
 font-style: italic;
 }
-#vghzhwsrtp .gt_super {
+#vsuxgkynlu .gt_super {
 font-size: 65%;
 }
-#vghzhwsrtp .gt_footnote_marks {
+#vsuxgkynlu .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#vghzhwsrtp .gt_asterisk {
+#vsuxgkynlu .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#vghzhwsrtp .gt_indent_1 {
+#vsuxgkynlu .gt_indent_1 {
 text-indent: 5px;
 }
-#vghzhwsrtp .gt_indent_2 {
+#vsuxgkynlu .gt_indent_2 {
 text-indent: 10px;
 }
-#vghzhwsrtp .gt_indent_3 {
+#vsuxgkynlu .gt_indent_3 {
 text-indent: 15px;
 }
-#vghzhwsrtp .gt_indent_4 {
+#vsuxgkynlu .gt_indent_4 {
 text-indent: 20px;
 }
-#vghzhwsrtp .gt_indent_5 {
+#vsuxgkynlu .gt_indent_5 {
 text-indent: 25px;
 }
-#vghzhwsrtp .katex-display {
+#vsuxgkynlu .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#vghzhwsrtp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vsuxgkynlu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -3595,46 +3698,23 @@ height: 0px !important;
 </section>
 <section id="optional-render-findings-using-the-gt-engine-for-professional-html-output" class="level3">
 <h3 class="anchored" data-anchor-id="optional-render-findings-using-the-gt-engine-for-professional-html-output">Optional: Render findings using the gt engine for professional HTML output</h3>
+<p>To make a table like this dynamic, we use standard <code>dplyr</code> functions to pull the exact cells we need, format them, and append our corporate health policy labels right next to them.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_bracket            =</span> <span class="fu">c</span>(<span class="st">&quot;65–69 Years&quot;</span>, <span class="st">&quot;70–74 Years&quot;</span>, <span class="st">&quot;75+ Years&quot;</span>),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">volume                 =</span> <span class="fu">c</span>(<span class="st">&quot;High Volume&quot;</span>, <span class="st">&quot;Moderate Volume&quot;</span>, <span class="st">&quot;Low Volume&quot;</span>),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_risk              =</span> <span class="fu">c</span>(<span class="st">&quot;~4.38 (High)&quot;</span>, <span class="st">&quot;~7.01 (Peak)&quot;</span>, <span class="st">&quot;~2.39 (Low)&quot;</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_value             =</span> <span class="fu">c</span>(<span class="st">&quot;~0.73 (Low Value)&quot;</span>, <span class="st">&quot;~4.54 (Peak Value)&quot;</span>, <span class="st">&quot;~0.35 (Lowest Value)&quot;</span>),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">status                 =</span> <span class="fu">c</span>(<span class="st">&quot;⚠️ Critical Action Zone&quot;</span>, <span class="st">&quot;🟢 Optimized Pathway&quot;</span>, <span class="st">&quot;🔍 Review Required&quot;</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>summary_df <span class="sc">%&gt;%</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Module 1: Executive Results Summary Matrix&quot;</span>,</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Empirical Findings for Senior Leadership &amp; Policy Reflection&quot;</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_bracket =</span> <span class="st">&quot;Analyzed Age Cohort&quot;</span>,</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">volume      =</span> <span class="st">&quot;Patient Volume (N)&quot;</span>,</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_risk   =</span> <span class="st">&quot;Mean Risk Ratio&quot;</span>,</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_value  =</span> <span class="st">&quot;Mean Value Index Score&quot;</span>,</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">status      =</span> <span class="st">&quot;Strategic Exposure Status&quot;</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output-display">
-<div id="cigfbxxuay" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cigfbxxuay table {
+<div id="xwforgfomg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xwforgfomg table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#cigfbxxuay thead, #cigfbxxuay tbody, #cigfbxxuay tfoot, #cigfbxxuay tr, #cigfbxxuay td, #cigfbxxuay th {
+#xwforgfomg thead, #xwforgfomg tbody, #xwforgfomg tfoot, #xwforgfomg tr, #xwforgfomg td, #xwforgfomg th {
 border-style: none;
 }
-#cigfbxxuay p {
+#xwforgfomg p {
 margin: 0;
 padding: 0;
 }
-#cigfbxxuay .gt_table {
+#xwforgfomg .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -3659,11 +3739,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#cigfbxxuay .gt_caption {
+#xwforgfomg .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#cigfbxxuay .gt_title {
+#xwforgfomg .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -3674,7 +3754,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#cigfbxxuay .gt_subtitle {
+#xwforgfomg .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -3685,7 +3765,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#cigfbxxuay .gt_heading {
+#xwforgfomg .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -3696,12 +3776,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#cigfbxxuay .gt_bottom_border {
+#xwforgfomg .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#cigfbxxuay .gt_col_headings {
+#xwforgfomg .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3715,7 +3795,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#cigfbxxuay .gt_col_heading {
+#xwforgfomg .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3734,7 +3814,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#cigfbxxuay .gt_column_spanner_outer {
+#xwforgfomg .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3745,13 +3825,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#cigfbxxuay .gt_column_spanner_outer:first-child {
+#xwforgfomg .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#cigfbxxuay .gt_column_spanner_outer:last-child {
+#xwforgfomg .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#cigfbxxuay .gt_column_spanner {
+#xwforgfomg .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -3762,10 +3842,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#cigfbxxuay .gt_spanner_row {
+#xwforgfomg .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#cigfbxxuay .gt_group_heading {
+#xwforgfomg .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3790,7 +3870,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#cigfbxxuay .gt_empty_group_heading {
+#xwforgfomg .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -3804,13 +3884,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#cigfbxxuay .gt_from_md > :first-child {
+#xwforgfomg .gt_from_md > :first-child {
 margin-top: 0;
 }
-#cigfbxxuay .gt_from_md > :last-child {
+#xwforgfomg .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#cigfbxxuay .gt_row {
+#xwforgfomg .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3828,7 +3908,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#cigfbxxuay .gt_stub {
+#xwforgfomg .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3840,7 +3920,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#cigfbxxuay .gt_stub_row_group {
+#xwforgfomg .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3853,13 +3933,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#cigfbxxuay .gt_row_group_first td {
+#xwforgfomg .gt_row_group_first td {
 border-top-width: 2px;
 }
-#cigfbxxuay .gt_row_group_first th {
+#xwforgfomg .gt_row_group_first th {
 border-top-width: 2px;
 }
-#cigfbxxuay .gt_summary_row {
+#xwforgfomg .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3868,14 +3948,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#cigfbxxuay .gt_first_summary_row {
+#xwforgfomg .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#cigfbxxuay .gt_first_summary_row.thick {
+#xwforgfomg .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#cigfbxxuay .gt_last_summary_row {
+#xwforgfomg .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3884,7 +3964,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#cigfbxxuay .gt_grand_summary_row {
+#xwforgfomg .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3893,7 +3973,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#cigfbxxuay .gt_first_grand_summary_row {
+#xwforgfomg .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3902,7 +3982,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#cigfbxxuay .gt_last_grand_summary_row_top {
+#xwforgfomg .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3911,10 +3991,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#cigfbxxuay .gt_striped {
+#xwforgfomg .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#cigfbxxuay .gt_table_body {
+#xwforgfomg .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3922,7 +4002,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#cigfbxxuay .gt_footnotes {
+#xwforgfomg .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3935,7 +4015,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#cigfbxxuay .gt_footnote {
+#xwforgfomg .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -3943,7 +4023,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#cigfbxxuay .gt_sourcenotes {
+#xwforgfomg .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3956,64 +4036,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#cigfbxxuay .gt_sourcenote {
+#xwforgfomg .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#cigfbxxuay .gt_left {
+#xwforgfomg .gt_left {
 text-align: left;
 }
-#cigfbxxuay .gt_center {
+#xwforgfomg .gt_center {
 text-align: center;
 }
-#cigfbxxuay .gt_right {
+#xwforgfomg .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#cigfbxxuay .gt_font_normal {
+#xwforgfomg .gt_font_normal {
 font-weight: normal;
 }
-#cigfbxxuay .gt_font_bold {
+#xwforgfomg .gt_font_bold {
 font-weight: bold;
 }
-#cigfbxxuay .gt_font_italic {
+#xwforgfomg .gt_font_italic {
 font-style: italic;
 }
-#cigfbxxuay .gt_super {
+#xwforgfomg .gt_super {
 font-size: 65%;
 }
-#cigfbxxuay .gt_footnote_marks {
+#xwforgfomg .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#cigfbxxuay .gt_asterisk {
+#xwforgfomg .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#cigfbxxuay .gt_indent_1 {
+#xwforgfomg .gt_indent_1 {
 text-indent: 5px;
 }
-#cigfbxxuay .gt_indent_2 {
+#xwforgfomg .gt_indent_2 {
 text-indent: 10px;
 }
-#cigfbxxuay .gt_indent_3 {
+#xwforgfomg .gt_indent_3 {
 text-indent: 15px;
 }
-#cigfbxxuay .gt_indent_4 {
+#xwforgfomg .gt_indent_4 {
 text-indent: 20px;
 }
-#cigfbxxuay .gt_indent_5 {
+#xwforgfomg .gt_indent_5 {
 text-indent: 25px;
 }
-#cigfbxxuay .katex-display {
+#xwforgfomg .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#cigfbxxuay div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xwforgfomg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -4028,7 +4108,7 @@ height: 0px !important;
 </tr>
 <tr class="gt_col_headings header">
 <th id="age_bracket" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Analyzed Age Cohort</th>
-<th id="volume" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Patient Volume (N)</th>
+<th id="volume" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Patient Volume</th>
 <th id="mean_risk" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Mean Risk Ratio</th>
 <th id="mean_value" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Mean Value Index Score</th>
 <th id="status" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Strategic Exposure Status</th>
@@ -4038,25 +4118,30 @@ height: 0px !important;
 <tr class="odd">
 <td class="gt_row gt_left" headers="age_bracket">65–69 Years</td>
 <td class="gt_row gt_left" headers="volume">High Volume</td>
-<td class="gt_row gt_left" headers="mean_risk">~4.38 (High)</td>
-<td class="gt_row gt_left" headers="mean_value">~0.73 (Low Value)</td>
+<td class="gt_row gt_left" headers="mean_risk">3.86 (Low)</td>
+<td class="gt_row gt_left" headers="mean_value">2 (Low Value)</td>
 <td class="gt_row gt_left" headers="status">⚠️ Critical Action Zone</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="age_bracket">70–74 Years</td>
 <td class="gt_row gt_left" headers="volume">Moderate Volume</td>
-<td class="gt_row gt_left" headers="mean_risk">~7.01 (Peak)</td>
-<td class="gt_row gt_left" headers="mean_value">~4.54 (Peak Value)</td>
+<td class="gt_row gt_left" headers="mean_risk">5.26 (Peak)</td>
+<td class="gt_row gt_left" headers="mean_value">2.24 (Peak Value)</td>
 <td class="gt_row gt_left" headers="status">🟢 Optimized Pathway</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="age_bracket">75+ Years</td>
 <td class="gt_row gt_left" headers="volume">Low Volume</td>
-<td class="gt_row gt_left" headers="mean_risk">~2.39 (Low)</td>
-<td class="gt_row gt_left" headers="mean_value">~0.35 (Lowest Value)</td>
+<td class="gt_row gt_left" headers="mean_risk">0.00 (None)*</td>
+<td class="gt_row gt_left" headers="mean_value">0.00 (None)*</td>
 <td class="gt_row gt_left" headers="status">🔍 Review Required</td>
 </tr>
-</tbody>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="5" class="gt_sourcenote">*Note: The 75+ cohort drops to 0.00 due to specific data filters and sample size limitations in this raw exercise chunk.</td>
+</tr>
+</tfoot>
+
 </table>
 
 </div>
@@ -4534,360 +4619,441 @@ height: 0px !important;
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;MHIA 6160: Value &amp; Quality in Healthcare&quot;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> &quot;Week 1 R-Laboratory: Foundations of Data Literacy &amp; Preprocessing&quot;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Dr. Cameron B. Chiarot&quot;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">    embed-resources: true</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">/* Force inline code symbols to be a specific color and style */</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>code <span class="op">{</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  color<span class="op">:</span> #<span class="dv">333333</span> <span class="op">!</span>important<span class="op">;</span>       <span class="co">/* Changes the text color (Change #333333 to any hex code) */</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  background<span class="op">-</span>color<span class="op">:</span> #f7f7f7<span class="op">;</span>       <span class="co">/* Keeps a clean, soft grey background pocket */</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  padding<span class="op">:</span> <span class="dv">2</span>px <span class="dv">4</span>px<span class="op">;</span>                <span class="co">/* Adds a crisp border margin around the symbol */</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  border<span class="op">-</span>radius<span class="op">:</span> <span class="dv">4</span>px<span class="op">;</span>              <span class="co">/* Rounds the edges of the background code badge */</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Laboratory Overview</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>Welcome to your first Weekly R-Laboratory. This course operates on a **Code-Along Philosophy**: you are not expected to build complex programming architecture from scratch. Instead, you will interact with standardized structural scaffolding, learning how to manipulate key parameters, clean data pipelines, and interpret empirical outputs to drive strategic, evidence-based health administration and leadership.</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>Today&#39;s session is divided into four progressive parts:</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Part I: The Excel Friction Exercise:** Exposing the limitations of spreadsheets.</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Part II: The R Building Blocks:** Mastering the 4 basic rules of coding syntax.</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Part III: The Preprocessing Pipeline:** Working with a real-world clinical dataset.</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Part IV: The Value-Based Storyline:** Calculating, visualizing and reporting value.</span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part I: The Excel Friction Exercise</span></span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Background &amp; Objective</span></span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>Before diving into code, we must evaluate the **&quot;value proposition&quot;** of transitioning from an Excel environment to an <span class="in">`R`</span> workspace. In healthcare administration, manual data tasks introduce non-reproducible errors, hidden risks, and productivity costs. </span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Task</span></span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>Navigate to your Canvas module and download the 20-row spreadsheet sample named <span class="in">`blood_storage_sample.csv`</span>. Open it in Microsoft Excel and attempt to execute the following administrative actions:</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Variable Organization:** Locate the column named <span class="in">`TimeToRecurrence`</span>. Manually change the column header name to <span class="in">`months_to_return`</span>.</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Indicator Engineering:** Create a new column named <span class="in">`Age_PSA_Ratio`</span>. Write a cell formula to calculate this metric by dividing the patient&#39;s <span class="in">`Age`</span> by their <span class="in">`PreopPSA`</span> value for all rows.</span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Subsetting:** Use Excel&#39;s filtering feature to isolate only high-risk patients who are **Age 65 or older** AND have a baseline PSA count of **greater than or equal to 10**.</span>
-<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Executive Reflection</span></span>
-<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>Once complete, consider these three operational challenges:</span>
-<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Scale Problem:** If you receive an updated system database next week containing 200,000 patient rows instead of 20, how long will it take to manually re-click, re-formula, and re-filter the spreadsheet?</span>
-<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**The Black Box Problem:** If you accidentally modify a cell value while scrolling, does Excel provide an immutable alert trail, or does the model break quietly?</span>
-<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**The Audit Problem:** If a regulatory body requests the exact logical sequence you used to clean this data, can they inspect or reproduce your mouse clicks?</span>
-<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part II: The R Building Blocks</span></span>
-<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>To transition away from manual spreadsheet clicking, we must understand the four basic rules that govern how <span class="in">`R`</span> processes data. Open your raw script file <span class="in">`module_1_foundations.R`</span> inside your <span class="in">`RStudio Project`</span> ecosystem and code along with the sections below.</span>
-<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 1: The Assignment Operator (`&lt;-`)</span></span>
-<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>In Excel, data is permanently bound to a specific grid cell (like <span class="in">`B4`</span>). In <span class="in">`R`</span>, we store data inside a named, flexible <span class="in">`object`</span> using the assignment arrow (<span class="in">`&lt;-`</span>). Think of this as placing data inside a labeled container on an executive asset shelf.</span>
-<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>Expand the code block below, copy the syntax, paste it into your script, and execute it:</span>
-<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r assignment}</span></span>
-<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Store a patient&#39;s age inside an object container</span></span>
-<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>patient_age <span class="ot">&lt;-</span> <span class="dv">65</span></span>
-<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the value to your console to verify</span></span>
-<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>patient_age</span>
-<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 2: Data Types (Numeric vs. Character Strings)</span></span>
-<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a><span class="in">`R`</span> enforces strict structural rules based on data classification to preserve math integrity.</span>
-<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Numeric:** Raw numbers that R can perform calculations on (e.g., fractional laboratory counts, financial budgets).</span>
-<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Character Strings:** Text data used for descriptive labels. Text values **must** be wrapped in quotation marks (<span class="in">`&quot;&quot;`</span>) so R recognizes them as text rather than a programmatic command.</span>
-<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r datatypes}</span></span>
-<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric indicator</span></span>
-<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>baseline_hb <span class="ot">&lt;-</span> <span class="fl">14.2</span></span>
-<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Character string label</span></span>
-<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a>facility_name <span class="ot">&lt;-</span> <span class="st">&quot;Schulich Health Network&quot;</span></span>
-<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 3: Logical Operators (`&gt;=`, `&amp;`, `==`)</span></span>
-<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a>This is the foundational logic used to filter populations. R evaluates clinical rows against your conditions and returns a binary <span class="in">`TRUE`</span> or <span class="in">`FALSE`</span> assessment.</span>
-<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="in">`&gt;=`</span> : Greater than or equal to</span>
-<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="in">`&amp;`</span> : And (both conditions must resolve to true simultaneously)</span>
-<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="in">`==`</span> : Is exactly equal to (we use a double equals sign for evaluation, because a single equals sign is reserved for setting parameters inside functions)</span>
-<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r logicals}</span></span>
-<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate if our stored patient age meets a clinical threshold</span></span>
-<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a>patient_age <span class="sc">&gt;=</span> <span class="dv">70</span></span>
-<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 4. Missing Values (`NA`)</span></span>
-<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a>In Excel, missing observations are represented by blank cells, which can easily be calculated as zeros by mistake, heavily skewing your data summaries. <span class="in">`R`</span> explicitly flags missing records as <span class="in">`NA`</span> (*Not Available*), forcing decision-makers to intentionally choose how to address incomplete metrics.</span>
-<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part III: The Preprocessing Pipeline</span></span>
-<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a>Data preprocessing consumes up to **80% of any healthcare analytics project**. We will now utilize the <span class="in">`medicaldata`</span> library to build an automated, fully reproducible cleaning pipeline that transforms a raw, messy dataset into an executive matrix.</span>
-<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code-Along Instructions</span></span>
-<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a>Copy the code pipeline below into your script file:</span>
-<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a><span class="co"># ACTIVATE PROGRAMMATIC SUITES (Load Libraries)</span></span>
-<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)    <span class="co"># Collection of packages for data cleaning, wrangling, and plotting</span></span>
-<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)  <span class="co"># Provides verified, native real-world medical teaching datasets</span></span>
-<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)   <span class="co"># Handles name clashing between libraries</span></span>
-<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)           <span class="co"># Generates publication-quality executive summary tables</span></span>
-<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a><span class="co"># DECLARE PACKAGE PREFERENCES (Resolve Hidden Pkg. Conflicts)</span></span>
-<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a><span class="co"># We explicitly tell R to use &#39;dplyr&#39; for commands that exist in multiple packages</span></span>
-<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;filter&quot;</span>, <span class="st">&quot;dplyr&quot;</span>) <span class="co"># Forces R to use the data-filtering tool from dplyr</span></span>
-<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;lag&quot;</span>,    <span class="st">&quot;dplyr&quot;</span>) <span class="co"># Forces R to use the time-lagging tool from dplyr</span></span>
-<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a><span class="co"># INTRODUCE THE CLINICAL SOURCE FILE (Load Data)</span></span>
-<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage <span class="co"># Extracts the prostate oncology dataset</span></span>
-<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a><span class="co"># BUILD THE REPRODUCIBLE DATA ASSEMBLY LINE</span></span>
-<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a>cleaned_executive_data <span class="ot">&lt;-</span> raw_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pillar A: Structure &amp; Selection</span></span>
-<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Isolate only the specific clinical metrics required for our strategic tracking</span></span>
-<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Age, PreopPSA, TimeToRecurrence, Recurrence) <span class="sc">%&gt;%</span></span>
-<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Standardize native database headers into clear corporate snake_case descriptors</span></span>
-<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_age      =</span> Age,</span>
-<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a>    <span class="at">baseline_psa     =</span> PreopPSA,</span>
-<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a>    <span class="at">months_to_return =</span> TimeToRecurrence,</span>
-<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a>    <span class="at">return_status    =</span> Recurrence</span>
-<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Data Type Cleaning &amp; Categorization</span></span>
-<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert a numeric code into text so R treats it as a grouping label, not a math value</span></span>
-<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a>    <span class="at">return_status =</span> <span class="fu">as.character</span>(return_status)</span>
-<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pillar B: Data Transformation &amp; Value Engineering</span></span>
-<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Formulating the Lecture 1 Value Equation: Outcomes (Months Disease-Free) / Baseline Burden (PSA)</span></span>
-<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>    <span class="at">systemic_risk_ratio =</span> patient_age <span class="sc">/</span> baseline_psa,</span>
-<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>    <span class="at">healthcare_value_index =</span> months_to_return <span class="sc">/</span> baseline_psa</span>
-<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pillar C: Subsetting &amp; Filtering</span></span>
-<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Isolate only patients who are age 65 or older AND have a baseline PSA score of 10+</span></span>
-<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">&amp;</span> baseline_psa <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part IV: The Value-Based Storyline</span></span>
-<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a><span class="fu">### Part A. The Individual Operational Preview (For the Health Analyst)</span></span>
-<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>Displays a granular, row-by-row look at the first 5 individual high-risk profiles to audit calculations and column transformations.</span>
-<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Report: Row-by-Row Granular File Audit</span></span>
-<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a>cleaned_executive_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="co"># Restricts the layout output preview to protect document space</span></span>
-<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span>       </span>
-<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Value-Based Healthcare Analytics Matrix&quot;</span>,</span>
-<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Granular Preview: Individual Surgical Patient Records&quot;</span></span>
-<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_age =</span> <span class="st">&quot;Age Indicator&quot;</span>,</span>
-<span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">baseline_psa =</span> <span class="st">&quot;Baseline PSA (ng/mL)&quot;</span>,</span>
-<span id="cb13-204"><a href="#cb13-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">months_to_return =</span> <span class="st">&quot;Months to Recurrence&quot;</span>,</span>
-<span id="cb13-205"><a href="#cb13-205" aria-hidden="true" tabindex="-1"></a>    <span class="at">return_status =</span> <span class="st">&quot;Recurrence Code&quot;</span>,</span>
-<span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a>    <span class="at">systemic_risk_ratio =</span> <span class="st">&quot;Risk Ratio&quot;</span>,</span>
-<span id="cb13-207"><a href="#cb13-207" aria-hidden="true" tabindex="-1"></a>    <span class="at">healthcare_value_index =</span> <span class="st">&quot;Value Index Score&quot;</span></span>
-<span id="cb13-208"><a href="#cb13-208" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-209"><a href="#cb13-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-210"><a href="#cb13-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-211"><a href="#cb13-211" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot: Visualizing the Operational Screening Threshold</span></span>
-<span id="cb13-212"><a href="#cb13-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-215"><a href="#cb13-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-216"><a href="#cb13-216" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb13-217"><a href="#cb13-217" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb13-218"><a href="#cb13-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-219"><a href="#cb13-219" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> raw_data, <span class="fu">aes</span>(<span class="at">x =</span> Age)) <span class="sc">+</span></span>
-<span id="cb13-220"><a href="#cb13-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;#e0e0e0&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#2c3e50&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb13-221"><a href="#cb13-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">65</span>, <span class="at">color =</span> <span class="st">&quot;#c03&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb13-222"><a href="#cb13-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb13-223"><a href="#cb13-223" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">68</span>, <span class="at">y =</span> <span class="fl">0.02</span>, </span>
-<span id="cb13-224"><a href="#cb13-224" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Age 65+ Screening Gate&quot;</span>, </span>
-<span id="cb13-225"><a href="#cb13-225" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#c03&quot;</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span></span>
-<span id="cb13-226"><a href="#cb13-226" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-227"><a href="#cb13-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-228"><a href="#cb13-228" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Plot A: Clinical Population Screening Thresholds&quot;</span>,</span>
-<span id="cb13-229"><a href="#cb13-229" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Operational Gate for Isolating the Target Geriatric Cohort&quot;</span>,</span>
-<span id="cb13-230"><a href="#cb13-230" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Patient Age (Years)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Population Density&quot;</span></span>
-<span id="cb13-231"><a href="#cb13-231" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-232"><a href="#cb13-232" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb13-233"><a href="#cb13-233" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb13-234"><a href="#cb13-234" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#2c3e50&quot;</span>),</span>
-<span id="cb13-235"><a href="#cb13-235" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb13-236"><a href="#cb13-236" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-237"><a href="#cb13-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-238"><a href="#cb13-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-239"><a href="#cb13-239" aria-hidden="true" tabindex="-1"></a><span class="fu">### Part B: The Strategic Stakeholder Summary (For the Boardroom)</span></span>
-<span id="cb13-240"><a href="#cb13-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-241"><a href="#cb13-241" aria-hidden="true" tabindex="-1"></a>Compresses all individual matching rows into 5-year aggregate cohorts to evaluate macro-level strategic exposure and system trends.</span>
-<span id="cb13-242"><a href="#cb13-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-245"><a href="#cb13-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-246"><a href="#cb13-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb13-247"><a href="#cb13-247" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb13-248"><a href="#cb13-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-249"><a href="#cb13-249" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Aggregation Step (stratifying rows into strategic age cohorts)</span></span>
-<span id="cb13-250"><a href="#cb13-250" aria-hidden="true" tabindex="-1"></a>stakeholder_summary <span class="ot">&lt;-</span> cleaned_executive_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-251"><a href="#cb13-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb13-252"><a href="#cb13-252" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_bracket =</span> <span class="fu">case_when</span>(</span>
-<span id="cb13-253"><a href="#cb13-253" aria-hidden="true" tabindex="-1"></a>      patient_age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">&amp;</span> patient_age <span class="sc">&lt;</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">&quot;65-69 Years&quot;</span>,</span>
-<span id="cb13-254"><a href="#cb13-254" aria-hidden="true" tabindex="-1"></a>      patient_age <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">&amp;</span> patient_age <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;70-74 Years&quot;</span>,</span>
-<span id="cb13-255"><a href="#cb13-255" aria-hidden="true" tabindex="-1"></a>      patient_age <span class="sc">&gt;=</span> <span class="dv">75</span>                    <span class="sc">~</span> <span class="st">&quot;75+ Years&quot;</span></span>
-<span id="cb13-256"><a href="#cb13-256" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-257"><a href="#cb13-257" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-258"><a href="#cb13-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_bracket) <span class="sc">%&gt;%</span></span>
-<span id="cb13-259"><a href="#cb13-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb13-260"><a href="#cb13-260" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_patients       =</span> <span class="fu">n</span>(),</span>
-<span id="cb13-261"><a href="#cb13-261" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_risk_ratio   =</span> <span class="fu">mean</span>(systemic_risk_ratio, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb13-262"><a href="#cb13-262" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_value_index  =</span> <span class="fu">mean</span>(healthcare_value_index, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-263"><a href="#cb13-263" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-264"><a href="#cb13-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-265"><a href="#cb13-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-266"><a href="#cb13-266" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Report: Presentation-Ready Aggregate Matrix</span></span>
-<span id="cb13-267"><a href="#cb13-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-270"><a href="#cb13-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-271"><a href="#cb13-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb13-272"><a href="#cb13-272" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb13-273"><a href="#cb13-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-274"><a href="#cb13-274" aria-hidden="true" tabindex="-1"></a>stakeholder_summary <span class="sc">%&gt;%</span></span>
-<span id="cb13-275"><a href="#cb13-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-276"><a href="#cb13-276" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb13-277"><a href="#cb13-277" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Executive Risk &amp; Value Briefing&quot;</span>,</span>
-<span id="cb13-278"><a href="#cb13-278" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Aggregated System Metrics for Strategic Resource Allocation&quot;</span></span>
-<span id="cb13-279"><a href="#cb13-279" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-280"><a href="#cb13-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb13-281"><a href="#cb13-281" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_bracket =</span> <span class="st">&quot;Analyzed Age Cohort&quot;</span>,</span>
-<span id="cb13-282"><a href="#cb13-282" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_patients =</span> <span class="st">&quot;Patient Volume (N)&quot;</span>,</span>
-<span id="cb13-283"><a href="#cb13-283" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_risk_ratio =</span> <span class="st">&quot;Mean Risk Ratio&quot;</span>,</span>
-<span id="cb13-284"><a href="#cb13-284" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_value_index =</span> <span class="st">&quot;Mean Value Index Score&quot;</span></span>
-<span id="cb13-285"><a href="#cb13-285" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-286"><a href="#cb13-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb13-287"><a href="#cb13-287" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(average_risk_ratio, average_value_index),</span>
-<span id="cb13-288"><a href="#cb13-288" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span> </span>
-<span id="cb13-289"><a href="#cb13-289" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-290"><a href="#cb13-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-291"><a href="#cb13-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-292"><a href="#cb13-292" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot: Visualizing Strategic Cohort Variances for Leadership</span></span>
-<span id="cb13-293"><a href="#cb13-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-296"><a href="#cb13-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-297"><a href="#cb13-297" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb13-298"><a href="#cb13-298" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb13-299"><a href="#cb13-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-300"><a href="#cb13-300" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> stakeholder_summary, <span class="fu">aes</span>(<span class="at">x =</span> average_risk_ratio, <span class="at">y =</span> age_bracket)) <span class="sc">+</span></span>
-<span id="cb13-301"><a href="#cb13-301" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#2c3e50&quot;</span>, <span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb13-302"><a href="#cb13-302" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb13-303"><a href="#cb13-303" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(average_risk_ratio, <span class="dv">2</span>)), </span>
-<span id="cb13-304"><a href="#cb13-304" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, </span>
-<span id="cb13-305"><a href="#cb13-305" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>, </span>
-<span id="cb13-306"><a href="#cb13-306" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#333333&quot;</span></span>
-<span id="cb13-307"><a href="#cb13-307" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-308"><a href="#cb13-308" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-309"><a href="#cb13-309" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Plot B: Stakeholder Executive Risk Briefing&quot;</span>,</span>
-<span id="cb13-310"><a href="#cb13-310" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Mean Systemic Risk Profiles Across Target Age Cohorts&quot;</span>,</span>
-<span id="cb13-311"><a href="#cb13-311" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Calculated Mean Risk Ratio (Age / Baseline PSA)&quot;</span>,</span>
-<span id="cb13-312"><a href="#cb13-312" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Anaylzed Age Cohort&quot;</span></span>
-<span id="cb13-313"><a href="#cb13-313" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-314"><a href="#cb13-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>))) <span class="sc">+</span></span>
-<span id="cb13-315"><a href="#cb13-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb13-316"><a href="#cb13-316" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb13-317"><a href="#cb13-317" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#2c3e50&quot;</span>),</span>
-<span id="cb13-318"><a href="#cb13-318" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb13-319"><a href="#cb13-319" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb13-320"><a href="#cb13-320" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-321"><a href="#cb13-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-322"><a href="#cb13-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-323"><a href="#cb13-323" aria-hidden="true" tabindex="-1"></a><span class="fu">### Optional: Render findings using the gt engine for professional HTML output</span></span>
-<span id="cb13-324"><a href="#cb13-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-327"><a href="#cb13-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-328"><a href="#cb13-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb13-329"><a href="#cb13-329" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb13-330"><a href="#cb13-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-331"><a href="#cb13-331" aria-hidden="true" tabindex="-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb13-332"><a href="#cb13-332" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_bracket            =</span> <span class="fu">c</span>(<span class="st">&quot;65–69 Years&quot;</span>, <span class="st">&quot;70–74 Years&quot;</span>, <span class="st">&quot;75+ Years&quot;</span>),</span>
-<span id="cb13-333"><a href="#cb13-333" aria-hidden="true" tabindex="-1"></a>  <span class="at">volume                 =</span> <span class="fu">c</span>(<span class="st">&quot;High Volume&quot;</span>, <span class="st">&quot;Moderate Volume&quot;</span>, <span class="st">&quot;Low Volume&quot;</span>),</span>
-<span id="cb13-334"><a href="#cb13-334" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_risk              =</span> <span class="fu">c</span>(<span class="st">&quot;~4.38 (High)&quot;</span>, <span class="st">&quot;~7.01 (Peak)&quot;</span>, <span class="st">&quot;~2.39 (Low)&quot;</span>),</span>
-<span id="cb13-335"><a href="#cb13-335" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_value             =</span> <span class="fu">c</span>(<span class="st">&quot;~0.73 (Low Value)&quot;</span>, <span class="st">&quot;~4.54 (Peak Value)&quot;</span>, <span class="st">&quot;~0.35 (Lowest Value)&quot;</span>),</span>
-<span id="cb13-336"><a href="#cb13-336" aria-hidden="true" tabindex="-1"></a>  <span class="at">status                 =</span> <span class="fu">c</span>(<span class="st">&quot;⚠️ Critical Action Zone&quot;</span>, <span class="st">&quot;🟢 Optimized Pathway&quot;</span>, <span class="st">&quot;🔍 Review Required&quot;</span>)</span>
-<span id="cb13-337"><a href="#cb13-337" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-338"><a href="#cb13-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-339"><a href="#cb13-339" aria-hidden="true" tabindex="-1"></a>summary_df <span class="sc">%&gt;%</span></span>
-<span id="cb13-340"><a href="#cb13-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-341"><a href="#cb13-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb13-342"><a href="#cb13-342" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Module 1: Executive Results Summary Matrix&quot;</span>,</span>
-<span id="cb13-343"><a href="#cb13-343" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Empirical Findings for Senior Leadership &amp; Policy Reflection&quot;</span></span>
-<span id="cb13-344"><a href="#cb13-344" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb13-345"><a href="#cb13-345" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb13-346"><a href="#cb13-346" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_bracket =</span> <span class="st">&quot;Analyzed Age Cohort&quot;</span>,</span>
-<span id="cb13-347"><a href="#cb13-347" aria-hidden="true" tabindex="-1"></a>    <span class="at">volume      =</span> <span class="st">&quot;Patient Volume (N)&quot;</span>,</span>
-<span id="cb13-348"><a href="#cb13-348" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_risk   =</span> <span class="st">&quot;Mean Risk Ratio&quot;</span>,</span>
-<span id="cb13-349"><a href="#cb13-349" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_value  =</span> <span class="st">&quot;Mean Value Index Score&quot;</span>,</span>
-<span id="cb13-350"><a href="#cb13-350" aria-hidden="true" tabindex="-1"></a>    <span class="at">status      =</span> <span class="st">&quot;Strategic Exposure Status&quot;</span></span>
-<span id="cb13-351"><a href="#cb13-351" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-352"><a href="#cb13-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb13-353"><a href="#cb13-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-354"><a href="#cb13-354" aria-hidden="true" tabindex="-1"></a><span class="fu"># Executive Reflection Prompts</span></span>
-<span id="cb13-355"><a href="#cb13-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-356"><a href="#cb13-356" aria-hidden="true" tabindex="-1"></a>Review your rendered tables and plots against these three core leadership questions before submitting your final synthesis deliverable:</span>
-<span id="cb13-357"><a href="#cb13-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-358"><a href="#cb13-358" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Fallacy of Raw Demographics:** If you only evaluated your hospital budget using age or volume alone, you might assume the oldest cohort ($75+$) demands the most complex resource shifting. How does calculating a dynamic Value Index show you that the true operational breakdown is actually occurring in the 65–69 age bracket?</span>
-<span id="cb13-359"><a href="#cb13-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-360"><a href="#cb13-360" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Translating Code to Strategy:** In Part III of your script, you wrote an automated pipeline using group_by() and summarize() to compress raw data. How does mastering this programmatic skill prevent you from presenting an unreadable &quot;black box&quot; spreadsheet of individual patient rows to an executive board?</span>
-<span id="cb13-361"><a href="#cb13-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-362"><a href="#cb13-362" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Value-Based Governance:** As a future health administrator, if the Ministry of Health demands a 10% optimization in clinical utility, which age cohort&#39;s care delivery framework will you audit first based on the empirical evidence?</span>
-<span id="cb13-363"><a href="#cb13-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-364"><a href="#cb13-364" aria-hidden="true" tabindex="-1"></a><span class="fu"># Week 1 R-Laboratory Synthesis Deliverable</span></span>
-<span id="cb13-365"><a href="#cb13-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-366"><a href="#cb13-366" aria-hidden="true" tabindex="-1"></a>Review the data preprocessing pipeline above. In your own words, explain the operational value of processing data via an irreversible step-by-step pipeline script versus sorting and overwriting cell ranges inside a standard spreadsheet workbook.</span>
-<span id="cb13-367"><a href="#cb13-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-368"><a href="#cb13-368" aria-hidden="true" tabindex="-1"></a>**{end}**</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;MHIA 6160: Value &amp; Quality in Healthcare&quot;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> &quot;Week 1 R-Laboratory: Foundations of Data Literacy &amp; Preprocessing&quot;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Dr. Cameron B. Chiarot&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">    embed-resources: true</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">/* Force inline code symbols to be a specific color and style */</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>code <span class="op">{</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  color<span class="op">:</span> #<span class="dv">333333</span> <span class="op">!</span>important<span class="op">;</span>       <span class="co">/* Changes the text color (Change #333333 to any hex code) */</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  background<span class="op">-</span>color<span class="op">:</span> #f7f7f7<span class="op">;</span>       <span class="co">/* Keeps a clean, soft grey background pocket */</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  padding<span class="op">:</span> <span class="dv">2</span>px <span class="dv">4</span>px<span class="op">;</span>                <span class="co">/* Adds a crisp border margin around the symbol */</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  border<span class="op">-</span>radius<span class="op">:</span> <span class="dv">4</span>px<span class="op">;</span>              <span class="co">/* Rounds the edges of the background code badge */</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Laboratory Overview</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>Welcome to your first Weekly R-Laboratory. This course operates on a **Code-Along Philosophy**: you are not expected to build complex programming architecture from scratch. Instead, you will interact with standardized structural scaffolding, learning how to manipulate key parameters, clean data pipelines, and interpret empirical outputs to drive strategic, evidence-based health administration and leadership.</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>Today&#39;s session is divided into four progressive parts:</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Part I: The Excel Friction Exercise:** Exposing the limitations of spreadsheets.</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Part II: The R Building Blocks:** Mastering the 4 basic rules of coding syntax.</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Part III: The Preprocessing Pipeline:** Working with a real-world clinical dataset.</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Part IV: The Value-Based Storyline:** Calculating, visualizing and reporting value.</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part I: The Excel Friction Exercise</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Background &amp; Objective</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>Before diving into code, we must evaluate the **&quot;value proposition&quot;** of transitioning from an Excel environment to an <span class="in">`R`</span> workspace. In healthcare administration, manual data tasks introduce non-reproducible errors, hidden risks, and productivity costs. </span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Task</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>Navigate to your Canvas module and download the 20-row spreadsheet sample named <span class="in">`blood_storage_sample.csv`</span>. Open it in Microsoft Excel and attempt to execute the following administrative actions:</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Variable Organization:** Locate the column named <span class="in">`TimeToRecurrence`</span>. Manually change the column header name to <span class="in">`months_to_return`</span>.</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Indicator Engineering:** Create a new column named <span class="in">`Age_PSA_Ratio`</span>. Write a cell formula to calculate this metric by dividing the patient&#39;s <span class="in">`Age`</span> by their <span class="in">`PreopPSA`</span> value for all rows.</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Subsetting:** Use Excel&#39;s filtering feature to isolate only high-risk patients who are **Age 65 or older** AND have a baseline PSA count of **greater than or equal to 10**.</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Executive Reflection</span></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>Once complete, consider these three operational challenges:</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Scale Problem:** If you receive an updated system database next week containing 200,000 patient rows instead of 20, how long will it take to manually re-click, re-formula, and re-filter the spreadsheet?</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**The Black Box Problem:** If you accidentally modify a cell value while scrolling, does Excel provide an immutable alert trail, or does the model break quietly?</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**The Audit Problem:** If a regulatory body requests the exact logical sequence you used to clean this data, can they inspect or reproduce your mouse clicks?</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part II: The R Building Blocks</span></span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>To transition away from manual spreadsheet clicking, we must understand the four basic rules that govern how <span class="in">`R`</span> processes data. Open your raw script file <span class="in">`module_1_foundations.R`</span> inside your <span class="in">`RStudio Project`</span> ecosystem and code along with the sections below.</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🔑 Programmatic Vocabulary &amp; Syntax Key</span></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>*Instructors Note: Think of these symbols as the punctuation marks of data engineering. Before we write full data assembly lines, use this table as your foundational grammar guide.*</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Symbol / Operator <span class="pp">|</span> Official Name <span class="pp">|</span> What It Tells R To Do (Administrative Definition) <span class="pp">|</span></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a><span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">| ---</span> <span class="pp">|</span></span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`&lt;-`** | **Assignment Operator** <span class="pp">|</span> Stash the data on the right inside the object container name on the left. *(e.g., `patient_age &lt;- 65`)* <span class="pp">|</span></span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`%&gt;%`** or **`|&gt;`** | **The Pipe** | Take the output of the line above it and pass it directly into the first argument of the next line. Read this out loud as **&quot;And Then...&quot;** <span class="pp">|</span></span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`$`** | **The Vector Explode / Extractor** <span class="pp">|</span> Reach inside a data frame object and grab one single, isolated column vector by its header name. *(e.g., `raw_data$Age`)* <span class="pp">|</span></span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`==`** | **Logical Equality** <span class="pp">|</span> Evaluate row-by-row whether two elements are an exact match. *(Remember: a single `=` sets parameters, a double `==` asks a question).* <span class="pp">|</span></span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`!=`** | **Logical Inequality** | Evaluate row-by-row whether elements do **NOT** match. <span class="pp">|</span></span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`&amp;`** | **Logical AND** | Enforce a hard constraint where **both** clinical conditions must be <span class="in">`TRUE`</span> simultaneously for a row to pass through. <span class="pp">|</span></span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`c(...)`** | **Combine / Concatenate Function** <span class="pp">|</span> Glue individual data cells or strings together into a single, unified vector list. *(e.g., creating our age cohort list).* <span class="pp">|</span></span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **`#`** | **The Comment Flag** <span class="pp">|</span> Tell the computer to completely ignore this line. This is reserved strictly for human annotating, documentation, and auditing. <span class="pp">|</span></span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 1: The Assignment Operator (`&lt;-`)</span></span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>In Excel, data is permanently bound to a specific grid cell (like <span class="in">`B4`</span>). In <span class="in">`R`</span>, we store data inside a named, flexible <span class="in">`object`</span> using the assignment arrow (<span class="in">`&lt;-`</span>). Think of this as placing data inside a labeled container on an executive asset shelf.</span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>Expand the code block below, copy the syntax, paste it into your script, and execute it:</span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r assignment}</span></span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Store a patient&#39;s age inside an object container</span></span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>patient_age <span class="ot">&lt;-</span> <span class="dv">65</span></span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the value to your console to verify</span></span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a>patient_age</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 2: Data Types (Numeric vs. Character Strings)</span></span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a><span class="in">`R`</span> enforces strict structural rules based on data classification to preserve math integrity.</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Numeric:** Raw numbers that R can perform calculations on (e.g., fractional laboratory counts, financial budgets).</span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Character Strings:** Text data used for descriptive labels. Text values **must** be wrapped in quotation marks (<span class="in">`&quot;&quot;`</span>) so R recognizes them as text rather than a programmatic command.</span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r datatypes}</span></span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric indicator</span></span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a>baseline_hb <span class="ot">&lt;-</span> <span class="fl">14.2</span></span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a><span class="co"># Character string label</span></span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a>facility_name <span class="ot">&lt;-</span> <span class="st">&quot;Schulich Health Network&quot;</span></span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-114"><a href="#cb12-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 3: Logical Operators (`&gt;=`, `&amp;`, `==`)</span></span>
+<span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a>This is the foundational logic used to filter populations. R evaluates clinical rows against your conditions and returns a binary <span class="in">`TRUE`</span> or <span class="in">`FALSE`</span> assessment.</span>
+<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="in">`&gt;=`</span> : Greater than or equal to</span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="in">`&amp;`</span> : And (both conditions must resolve to true simultaneously)</span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="in">`==`</span> : Is exactly equal to (we use a double equals sign for evaluation, because a single equals sign is reserved for setting parameters inside functions)</span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r logicals}</span></span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate if our stored patient age meets a clinical threshold</span></span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a>patient_age <span class="sc">&gt;=</span> <span class="dv">70</span></span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Bock 4. Missing Values (`NA`)</span></span>
+<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a>In Excel, missing observations are represented by blank cells, which can easily be calculated as zeros by mistake, heavily skewing your data summaries. <span class="in">`R`</span> explicitly flags missing records as <span class="in">`NA`</span> (*Not Available*), forcing decision-makers to intentionally choose how to address incomplete metrics.</span>
+<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part III: The Preprocessing Pipeline</span></span>
+<span id="cb12-133"><a href="#cb12-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🏛️ The Conceptual Core: Value-Based Healthcare Framework</span></span>
+<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a>Before launching into our active data assembly line, we must anchor our analytics in the formal administrative framework of Value-Based Healthcare (VBHC). As a health leader, your goal is not merely to track clinical volumes or cut isolated departmental costs, but to maximize the strategic &quot;return on investment&quot; across full cycles of patient care.</span>
+<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a><span class="fu">#### The Formal Definition of Value</span></span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a>In a value-based ecosystem, **Value** is defined as the health outcomes achieved per dollar expended to deliver that care. It is an objective utility score that forces administrators to look at clinical outcomes and financial resource consumption simultaneously, rather than as separate, competing silos.</span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a><span class="fu">#### The Theoretical vs. Operational Formula</span></span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>In your lecture slides, Michael Porter’s core value framework is defined mathematically as:</span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a>$$\text{Value} = \frac{\text{Health Outcomes (Patient-Centered)}}{\text{Total Cost of Care (Full Care Cycle)}}$$</span>
+<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-148"><a href="#cb12-148" aria-hidden="true" tabindex="-1"></a>Because real-world healthcare databases rarely contain explicit financial ledger dollar figures in their clinical tables, operational analysts use **Validated Proxies**, which are substitute clinical metrics that directly correlate with resource consumption and therapeutic milestones.</span>
+<span id="cb12-149"><a href="#cb12-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a>In the **Week 1 R Laboratory**, we operationalize this macro equation using specific variables from our prostate oncology database:</span>
+<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a>$$\text{Healthcare Value Index} = \frac{\text{Months to Recurrence (Outcome Proxy)}}{\text{Baseline PSA (Clinical Burden or Cost Proxy)}}$$</span>
+<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Variable Blueprint Directory</span></span>
+<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a>To map our dataset&#39;s raw database headers to this value calculation, understand how each component functions administratively:</span>
+<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a><span class="fu">##### **Numerator: `months_to_return` (`TimeToRecurrence`)**</span></span>
+<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>*Administrative Definition:* The total duration of time (measured in months) a patient remains completely free of disease following surgical intervention.</span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>*Strategic Utility:* This is our **Positive Outcome Proxy**. A higher number indicates superior care utility, effective clinical execution, and extended patient disease-free survival.</span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a><span class="fu">##### **Denominator: `baseline_psa` (`PreopPSA`)**</span></span>
+<span id="cb12-165"><a href="#cb12-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-166"><a href="#cb12-166" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>*Administrative Definition:* The patient&#39;s preoperative Prostate-Specific Antigen blood laboratory count (measured in ng/mL).</span>
+<span id="cb12-167"><a href="#cb12-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-168"><a href="#cb12-168" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>*Strategic Utility:* This is our **Clinical Burden &amp; Cost Proxy**. High baseline PSA levels signal aggressive disease staging, significantly higher surgical complexity, extensive post-operative tracking, and an elevated downstream risk profile. In short, a higher baseline PSA directly drives higher operational intensity and aggregate care cycle costs.</span>
+<span id="cb12-169"><a href="#cb12-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-170"><a href="#cb12-170" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Strategic Target: What We Are Auditing in the Output</span></span>
+<span id="cb12-171"><a href="#cb12-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-172"><a href="#cb12-172" aria-hidden="true" tabindex="-1"></a>When your final code pipelines render their data matrices, you are trained to look for specific mathematical thresholds to guide executive policy:</span>
+<span id="cb12-173"><a href="#cb12-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**A High Value Index Score ($\ge 2.00$):** Indicates an **Optimized Care Pathway**. The system is successfully buying a long runway of disease-free survival relative to the patient’s initial entry complexity. This signals efficient resource utilization.</span>
+<span id="cb12-175"><a href="#cb12-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**A Low Value Index Score ($&lt; 1.00$):** Indicates an **Operational Friction Point**. The care pathway is yielding very few disease-free months despite drawing heavily on system resources to manage a high baseline burden.</span>
+<span id="cb12-177"><a href="#cb12-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-178"><a href="#cb12-178" aria-hidden="true" tabindex="-1"></a>Your job as an administrator is to programmatically surface these low-value cohorts, audit their clinical pathways, and reallocate specialized institutional support to pull their value scores upward.</span>
+<span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code-Along Instructions</span></span>
+<span id="cb12-181"><a href="#cb12-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-182"><a href="#cb12-182" aria-hidden="true" tabindex="-1"></a>Data preprocessing consumes up to **80% of any healthcare analytics project**. We will now utilize the <span class="in">`medicaldata`</span> library to build an automated, fully reproducible cleaning pipeline that transforms a raw, messy dataset into an executive matrix.</span>
+<span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-184"><a href="#cb12-184" aria-hidden="true" tabindex="-1"></a>Copy the code pipeline below into your script file:</span>
+<span id="cb12-185"><a href="#cb12-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-188"><a href="#cb12-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-189"><a href="#cb12-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb12-190"><a href="#cb12-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-191"><a href="#cb12-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-192"><a href="#cb12-192" aria-hidden="true" tabindex="-1"></a><span class="co"># ACTIVATE PROGRAMMATIC SUITES (Load Libraries)</span></span>
+<span id="cb12-193"><a href="#cb12-193" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)    <span class="co"># Collection of packages for data cleaning, wrangling, and plotting</span></span>
+<span id="cb12-194"><a href="#cb12-194" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)  <span class="co"># Provides verified, native real-world medical teaching datasets</span></span>
+<span id="cb12-195"><a href="#cb12-195" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)   <span class="co"># Handles name clashing between libraries</span></span>
+<span id="cb12-196"><a href="#cb12-196" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)           <span class="co"># Generates publication-quality executive summary tables</span></span>
+<span id="cb12-197"><a href="#cb12-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-198"><a href="#cb12-198" aria-hidden="true" tabindex="-1"></a><span class="co"># DECLARE PACKAGE PREFERENCES (Resolve Hidden Pkg. Conflicts)</span></span>
+<span id="cb12-199"><a href="#cb12-199" aria-hidden="true" tabindex="-1"></a><span class="co"># We explicitly tell R to use &#39;dplyr&#39; for commands that exist in multiple packages</span></span>
+<span id="cb12-200"><a href="#cb12-200" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;filter&quot;</span>, <span class="st">&quot;dplyr&quot;</span>) <span class="co"># Forces R to use the data-filtering tool from dplyr</span></span>
+<span id="cb12-201"><a href="#cb12-201" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">&quot;lag&quot;</span>,    <span class="st">&quot;dplyr&quot;</span>) <span class="co"># Forces R to use the time-lagging tool from dplyr</span></span>
+<span id="cb12-202"><a href="#cb12-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-203"><a href="#cb12-203" aria-hidden="true" tabindex="-1"></a><span class="co"># INTRODUCE THE CLINICAL SOURCE FILE (Load Data)</span></span>
+<span id="cb12-204"><a href="#cb12-204" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage <span class="co"># Extracts the prostate oncology dataset</span></span>
+<span id="cb12-205"><a href="#cb12-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-206"><a href="#cb12-206" aria-hidden="true" tabindex="-1"></a><span class="co"># BUILD THE REPRODUCIBLE DATA ASSEMBLY LINE</span></span>
+<span id="cb12-207"><a href="#cb12-207" aria-hidden="true" tabindex="-1"></a>cleaned_executive_data <span class="ot">&lt;-</span> raw_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-208"><a href="#cb12-208" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-209"><a href="#cb12-209" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pillar A: Structure &amp; Selection</span></span>
+<span id="cb12-210"><a href="#cb12-210" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-211"><a href="#cb12-211" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Isolate only the specific clinical metrics required for our strategic tracking</span></span>
+<span id="cb12-212"><a href="#cb12-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Age, PreopPSA, TimeToRecurrence, Recurrence) <span class="sc">%&gt;%</span></span>
+<span id="cb12-213"><a href="#cb12-213" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-214"><a href="#cb12-214" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Standardize native database headers into clear corporate snake_case descriptors</span></span>
+<span id="cb12-215"><a href="#cb12-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb12-216"><a href="#cb12-216" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_age      =</span> Age,</span>
+<span id="cb12-217"><a href="#cb12-217" aria-hidden="true" tabindex="-1"></a>    <span class="at">baseline_psa     =</span> PreopPSA,</span>
+<span id="cb12-218"><a href="#cb12-218" aria-hidden="true" tabindex="-1"></a>    <span class="at">months_to_return =</span> TimeToRecurrence,</span>
+<span id="cb12-219"><a href="#cb12-219" aria-hidden="true" tabindex="-1"></a>    <span class="at">return_status    =</span> Recurrence</span>
+<span id="cb12-220"><a href="#cb12-220" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-221"><a href="#cb12-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-222"><a href="#cb12-222" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Data Type Cleaning &amp; Categorization</span></span>
+<span id="cb12-223"><a href="#cb12-223" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert a numeric code into text so R treats it as a grouping label, not a math value</span></span>
+<span id="cb12-224"><a href="#cb12-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-225"><a href="#cb12-225" aria-hidden="true" tabindex="-1"></a>    <span class="at">return_status =</span> <span class="fu">as.character</span>(return_status)</span>
+<span id="cb12-226"><a href="#cb12-226" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-227"><a href="#cb12-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-228"><a href="#cb12-228" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pillar B: Data Transformation &amp; Value Engineering</span></span>
+<span id="cb12-229"><a href="#cb12-229" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-230"><a href="#cb12-230" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Formulating the Lecture 1 Value Equation: Outcomes (Months Disease-Free) / Baseline Burden (PSA)</span></span>
+<span id="cb12-231"><a href="#cb12-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-232"><a href="#cb12-232" aria-hidden="true" tabindex="-1"></a>    <span class="at">systemic_risk_ratio =</span> patient_age <span class="sc">/</span> baseline_psa,</span>
+<span id="cb12-233"><a href="#cb12-233" aria-hidden="true" tabindex="-1"></a>    <span class="at">healthcare_value_index =</span> months_to_return <span class="sc">/</span> baseline_psa</span>
+<span id="cb12-234"><a href="#cb12-234" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-235"><a href="#cb12-235" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-236"><a href="#cb12-236" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pillar C: Subsetting &amp; Filtering</span></span>
+<span id="cb12-237"><a href="#cb12-237" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Isolate only patients who are age 65 or older AND have a baseline PSA score of 10+</span></span>
+<span id="cb12-238"><a href="#cb12-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">&amp;</span> baseline_psa <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb12-239"><a href="#cb12-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-240"><a href="#cb12-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-241"><a href="#cb12-241" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part IV: The Value-Based Storyline</span></span>
+<span id="cb12-242"><a href="#cb12-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-243"><a href="#cb12-243" aria-hidden="true" tabindex="-1"></a><span class="fu">### Part A. The Individual Operational Preview (For the Health Analyst)</span></span>
+<span id="cb12-244"><a href="#cb12-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-245"><a href="#cb12-245" aria-hidden="true" tabindex="-1"></a>Displays a granular, row-by-row look at the first 5 individual high-risk profiles to audit calculations and column transformations.</span>
+<span id="cb12-246"><a href="#cb12-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-247"><a href="#cb12-247" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Report: Row-by-Row Granular File Audit</span></span>
+<span id="cb12-248"><a href="#cb12-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-251"><a href="#cb12-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-252"><a href="#cb12-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb12-253"><a href="#cb12-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-254"><a href="#cb12-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-255"><a href="#cb12-255" aria-hidden="true" tabindex="-1"></a>cleaned_executive_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-256"><a href="#cb12-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="co"># Restricts the layout output preview to protect document space</span></span>
+<span id="cb12-257"><a href="#cb12-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span>       </span>
+<span id="cb12-258"><a href="#cb12-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb12-259"><a href="#cb12-259" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Value-Based Healthcare Analytics Matrix&quot;</span>,</span>
+<span id="cb12-260"><a href="#cb12-260" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Granular Preview: Individual Surgical Patient Records&quot;</span></span>
+<span id="cb12-261"><a href="#cb12-261" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-262"><a href="#cb12-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb12-263"><a href="#cb12-263" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_age =</span> <span class="st">&quot;Age Indicator&quot;</span>,</span>
+<span id="cb12-264"><a href="#cb12-264" aria-hidden="true" tabindex="-1"></a>    <span class="at">baseline_psa =</span> <span class="st">&quot;Baseline PSA (ng/mL)&quot;</span>,</span>
+<span id="cb12-265"><a href="#cb12-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">months_to_return =</span> <span class="st">&quot;Months to Recurrence&quot;</span>,</span>
+<span id="cb12-266"><a href="#cb12-266" aria-hidden="true" tabindex="-1"></a>    <span class="at">return_status =</span> <span class="st">&quot;Recurrence Code&quot;</span>,</span>
+<span id="cb12-267"><a href="#cb12-267" aria-hidden="true" tabindex="-1"></a>    <span class="at">systemic_risk_ratio =</span> <span class="st">&quot;Risk Ratio&quot;</span>,</span>
+<span id="cb12-268"><a href="#cb12-268" aria-hidden="true" tabindex="-1"></a>    <span class="at">healthcare_value_index =</span> <span class="st">&quot;Value Index Score&quot;</span></span>
+<span id="cb12-269"><a href="#cb12-269" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-270"><a href="#cb12-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-271"><a href="#cb12-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-272"><a href="#cb12-272" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot: Visualizing the Operational Screening Threshold</span></span>
+<span id="cb12-273"><a href="#cb12-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-276"><a href="#cb12-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-277"><a href="#cb12-277" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb12-278"><a href="#cb12-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-279"><a href="#cb12-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-280"><a href="#cb12-280" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> raw_data, <span class="fu">aes</span>(<span class="at">x =</span> Age)) <span class="sc">+</span></span>
+<span id="cb12-281"><a href="#cb12-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;#e0e0e0&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#2c3e50&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb12-282"><a href="#cb12-282" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">65</span>, <span class="at">color =</span> <span class="st">&quot;#c03&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb12-283"><a href="#cb12-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb12-284"><a href="#cb12-284" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">68</span>, <span class="at">y =</span> <span class="fl">0.02</span>, </span>
+<span id="cb12-285"><a href="#cb12-285" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Age 65+ Screening Gate&quot;</span>, </span>
+<span id="cb12-286"><a href="#cb12-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#c03&quot;</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span></span>
+<span id="cb12-287"><a href="#cb12-287" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-288"><a href="#cb12-288" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-289"><a href="#cb12-289" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Plot A: Clinical Population Screening Thresholds&quot;</span>,</span>
+<span id="cb12-290"><a href="#cb12-290" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Operational Gate for Isolating the Target Geriatric Cohort&quot;</span>,</span>
+<span id="cb12-291"><a href="#cb12-291" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Patient Age (Years)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Population Density&quot;</span></span>
+<span id="cb12-292"><a href="#cb12-292" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-293"><a href="#cb12-293" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb12-294"><a href="#cb12-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb12-295"><a href="#cb12-295" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#2c3e50&quot;</span>),</span>
+<span id="cb12-296"><a href="#cb12-296" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb12-297"><a href="#cb12-297" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-298"><a href="#cb12-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-299"><a href="#cb12-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-300"><a href="#cb12-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Part B: The Strategic Stakeholder Summary (For the Boardroom)</span></span>
+<span id="cb12-301"><a href="#cb12-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-302"><a href="#cb12-302" aria-hidden="true" tabindex="-1"></a>Compresses all individual matching rows into 5-year aggregate cohorts to evaluate macro-level strategic exposure and system trends.</span>
+<span id="cb12-303"><a href="#cb12-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-306"><a href="#cb12-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-307"><a href="#cb12-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb12-308"><a href="#cb12-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-309"><a href="#cb12-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-310"><a href="#cb12-310" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Aggregation Step (stratifying rows into strategic age cohorts)</span></span>
+<span id="cb12-311"><a href="#cb12-311" aria-hidden="true" tabindex="-1"></a>stakeholder_summary <span class="ot">&lt;-</span> cleaned_executive_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-312"><a href="#cb12-312" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-313"><a href="#cb12-313" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_bracket =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-314"><a href="#cb12-314" aria-hidden="true" tabindex="-1"></a>      patient_age <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">&amp;</span> patient_age <span class="sc">&lt;</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">&quot;65-69 Years&quot;</span>,</span>
+<span id="cb12-315"><a href="#cb12-315" aria-hidden="true" tabindex="-1"></a>      patient_age <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">&amp;</span> patient_age <span class="sc">&lt;</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">&quot;70-74 Years&quot;</span>,</span>
+<span id="cb12-316"><a href="#cb12-316" aria-hidden="true" tabindex="-1"></a>      patient_age <span class="sc">&gt;=</span> <span class="dv">75</span>                    <span class="sc">~</span> <span class="st">&quot;75+ Years&quot;</span></span>
+<span id="cb12-317"><a href="#cb12-317" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-318"><a href="#cb12-318" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-319"><a href="#cb12-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_bracket) <span class="sc">%&gt;%</span></span>
+<span id="cb12-320"><a href="#cb12-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb12-321"><a href="#cb12-321" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_patients       =</span> <span class="fu">n</span>(),</span>
+<span id="cb12-322"><a href="#cb12-322" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_risk_ratio   =</span> <span class="fu">mean</span>(systemic_risk_ratio, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-323"><a href="#cb12-323" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_value_index  =</span> <span class="fu">mean</span>(healthcare_value_index, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-324"><a href="#cb12-324" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-325"><a href="#cb12-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-326"><a href="#cb12-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-327"><a href="#cb12-327" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Report: Presentation-Ready Aggregate Matrix</span></span>
+<span id="cb12-328"><a href="#cb12-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-331"><a href="#cb12-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-332"><a href="#cb12-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb12-333"><a href="#cb12-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-334"><a href="#cb12-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-335"><a href="#cb12-335" aria-hidden="true" tabindex="-1"></a>stakeholder_summary <span class="sc">%&gt;%</span></span>
+<span id="cb12-336"><a href="#cb12-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-337"><a href="#cb12-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb12-338"><a href="#cb12-338" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Executive Risk &amp; Value Briefing&quot;</span>,</span>
+<span id="cb12-339"><a href="#cb12-339" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Aggregated System Metrics for Strategic Resource Allocation&quot;</span></span>
+<span id="cb12-340"><a href="#cb12-340" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-341"><a href="#cb12-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb12-342"><a href="#cb12-342" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_bracket =</span> <span class="st">&quot;Analyzed Age Cohort&quot;</span>,</span>
+<span id="cb12-343"><a href="#cb12-343" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_patients =</span> <span class="st">&quot;Patient Volume (N)&quot;</span>,</span>
+<span id="cb12-344"><a href="#cb12-344" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_risk_ratio =</span> <span class="st">&quot;Mean Risk Ratio&quot;</span>,</span>
+<span id="cb12-345"><a href="#cb12-345" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_value_index =</span> <span class="st">&quot;Mean Value Index Score&quot;</span></span>
+<span id="cb12-346"><a href="#cb12-346" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-347"><a href="#cb12-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb12-348"><a href="#cb12-348" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(average_risk_ratio, average_value_index),</span>
+<span id="cb12-349"><a href="#cb12-349" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span> </span>
+<span id="cb12-350"><a href="#cb12-350" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-351"><a href="#cb12-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-352"><a href="#cb12-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-353"><a href="#cb12-353" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot: Visualizing Strategic Cohort Variances for Leadership</span></span>
+<span id="cb12-354"><a href="#cb12-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-357"><a href="#cb12-357" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-358"><a href="#cb12-358" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb12-359"><a href="#cb12-359" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-360"><a href="#cb12-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-361"><a href="#cb12-361" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> stakeholder_summary, <span class="fu">aes</span>(<span class="at">x =</span> average_risk_ratio, <span class="at">y =</span> age_bracket)) <span class="sc">+</span></span>
+<span id="cb12-362"><a href="#cb12-362" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#2c3e50&quot;</span>, <span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb12-363"><a href="#cb12-363" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb12-364"><a href="#cb12-364" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(average_risk_ratio, <span class="dv">2</span>)), </span>
+<span id="cb12-365"><a href="#cb12-365" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, </span>
+<span id="cb12-366"><a href="#cb12-366" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>, </span>
+<span id="cb12-367"><a href="#cb12-367" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#333333&quot;</span></span>
+<span id="cb12-368"><a href="#cb12-368" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-369"><a href="#cb12-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-370"><a href="#cb12-370" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Plot B: Stakeholder Executive Risk Briefing&quot;</span>,</span>
+<span id="cb12-371"><a href="#cb12-371" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Mean Systemic Risk Profiles Across Target Age Cohorts&quot;</span>,</span>
+<span id="cb12-372"><a href="#cb12-372" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Calculated Mean Risk Ratio (Age / Baseline PSA)&quot;</span>,</span>
+<span id="cb12-373"><a href="#cb12-373" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Anaylzed Age Cohort&quot;</span></span>
+<span id="cb12-374"><a href="#cb12-374" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-375"><a href="#cb12-375" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>))) <span class="sc">+</span></span>
+<span id="cb12-376"><a href="#cb12-376" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb12-377"><a href="#cb12-377" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb12-378"><a href="#cb12-378" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#2c3e50&quot;</span>),</span>
+<span id="cb12-379"><a href="#cb12-379" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb12-380"><a href="#cb12-380" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb12-381"><a href="#cb12-381" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-382"><a href="#cb12-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-383"><a href="#cb12-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-384"><a href="#cb12-384" aria-hidden="true" tabindex="-1"></a><span class="fu">### Optional: Render findings using the gt engine for professional HTML output</span></span>
+<span id="cb12-385"><a href="#cb12-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-386"><a href="#cb12-386" aria-hidden="true" tabindex="-1"></a>To make a table like this dynamic, we use standard <span class="in">`dplyr`</span> functions to pull the exact cells we need, format them, and append our corporate health policy labels right next to them.</span>
+<span id="cb12-387"><a href="#cb12-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-388"><a href="#cb12-388" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summary_matrix, echo=FALSE}</span></span>
+<span id="cb12-389"><a href="#cb12-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-390"><a href="#cb12-390" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Isolate the true, live-calculated values into standalone reference variables</span></span>
+<span id="cb12-391"><a href="#cb12-391" aria-hidden="true" tabindex="-1"></a>val_65_69 <span class="ot">&lt;-</span> stakeholder_summary <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age_bracket <span class="sc">==</span> <span class="st">&quot;65-69 Years&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(average_value_index)</span>
+<span id="cb12-392"><a href="#cb12-392" aria-hidden="true" tabindex="-1"></a>val_70_74 <span class="ot">&lt;-</span> stakeholder_summary <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age_bracket <span class="sc">==</span> <span class="st">&quot;70-74 Years&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(average_value_index)</span>
+<span id="cb12-393"><a href="#cb12-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-394"><a href="#cb12-394" aria-hidden="true" tabindex="-1"></a>risk_65_69 <span class="ot">&lt;-</span> stakeholder_summary <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age_bracket <span class="sc">==</span> <span class="st">&quot;65-69 Years&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(average_risk_ratio)</span>
+<span id="cb12-395"><a href="#cb12-395" aria-hidden="true" tabindex="-1"></a>risk_70_74 <span class="ot">&lt;-</span> stakeholder_summary <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age_bracket <span class="sc">==</span> <span class="st">&quot;70-74 Years&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(average_risk_ratio)</span>
+<span id="cb12-396"><a href="#cb12-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-397"><a href="#cb12-397" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Programmatically assemble the summary frame using those live variables</span></span>
+<span id="cb12-398"><a href="#cb12-398" aria-hidden="true" tabindex="-1"></a>dynamic_summary_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb12-399"><a href="#cb12-399" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_bracket =</span> <span class="fu">c</span>(<span class="st">&quot;65–69 Years&quot;</span>, <span class="st">&quot;70–74 Years&quot;</span>, <span class="st">&quot;75+ Years&quot;</span>),</span>
+<span id="cb12-400"><a href="#cb12-400" aria-hidden="true" tabindex="-1"></a>  <span class="at">volume      =</span> <span class="fu">c</span>(<span class="st">&quot;High Volume&quot;</span>, <span class="st">&quot;Moderate Volume&quot;</span>, <span class="st">&quot;Low Volume&quot;</span>),</span>
+<span id="cb12-401"><a href="#cb12-401" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_risk   =</span> <span class="fu">c</span>(</span>
+<span id="cb12-402"><a href="#cb12-402" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(risk_65_69, <span class="dv">2</span>), <span class="st">&quot; (Low)&quot;</span>),</span>
+<span id="cb12-403"><a href="#cb12-403" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(risk_70_74, <span class="dv">2</span>), <span class="st">&quot; (Peak)&quot;</span>),</span>
+<span id="cb12-404"><a href="#cb12-404" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;0.00 (None)*&quot;</span></span>
+<span id="cb12-405"><a href="#cb12-405" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb12-406"><a href="#cb12-406" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_value  =</span> <span class="fu">c</span>(</span>
+<span id="cb12-407"><a href="#cb12-407" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(val_65_69, <span class="dv">2</span>), <span class="st">&quot; (Low Value)&quot;</span>),</span>
+<span id="cb12-408"><a href="#cb12-408" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(val_70_74, <span class="dv">2</span>), <span class="st">&quot; (Peak Value)&quot;</span>),</span>
+<span id="cb12-409"><a href="#cb12-409" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;0.00 (None)*&quot;</span></span>
+<span id="cb12-410"><a href="#cb12-410" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb12-411"><a href="#cb12-411" aria-hidden="true" tabindex="-1"></a>  <span class="at">status      =</span> <span class="fu">c</span>(<span class="st">&quot;⚠️ Critical Action Zone&quot;</span>, <span class="st">&quot;🟢 Optimized Pathway&quot;</span>, <span class="st">&quot;🔍 Review Required&quot;</span>)</span>
+<span id="cb12-412"><a href="#cb12-412" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-414"><a href="#cb12-414" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Render using the gt engine</span></span>
+<span id="cb12-415"><a href="#cb12-415" aria-hidden="true" tabindex="-1"></a>dynamic_summary_df <span class="sc">%&gt;%</span></span>
+<span id="cb12-416"><a href="#cb12-416" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Module 1: Executive Results Summary Matrix&quot;</span>,</span>
+<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Empirical Findings for Senior Leadership &amp; Policy Reflection&quot;</span></span>
+<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_bracket =</span> <span class="st">&quot;Analyzed Age Cohort&quot;</span>,</span>
+<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a>    <span class="at">volume      =</span> <span class="st">&quot;Patient Volume&quot;</span>,</span>
+<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_risk   =</span> <span class="st">&quot;Mean Risk Ratio&quot;</span>,</span>
+<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_value  =</span> <span class="st">&quot;Mean Value Index Score&quot;</span>,</span>
+<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>    <span class="at">status      =</span> <span class="st">&quot;Strategic Exposure Status&quot;</span></span>
+<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb12-429"><a href="#cb12-429" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">&quot;*Note: The 75+ cohort drops to 0.00 due to specific data filters and sample size limitations in this raw exercise chunk.&quot;</span></span>
+<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-433"><a href="#cb12-433" aria-hidden="true" tabindex="-1"></a><span class="fu"># Executive Reflection Prompts</span></span>
+<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a>Review your rendered tables and plots against these three core leadership questions before submitting your final synthesis deliverable:</span>
+<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Fallacy of Raw Demographics:** If you only evaluated your hospital budget using age or volume alone, you might assume the oldest cohort ($75+$) demands the most complex resource shifting. How does calculating a dynamic Value Index show you that the true operational breakdown is actually occurring in the 65–69 age bracket?</span>
+<span id="cb12-438"><a href="#cb12-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Translating Code to Strategy:** In Part III of your script, you wrote an automated pipeline using group_by() and summarize() to compress raw data. How does mastering this programmatic skill prevent you from presenting an unreadable &quot;black box&quot; spreadsheet of individual patient rows to an executive board?</span>
+<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Value-Based Governance:** As a future health administrator, if the Ministry of Health demands a 10% optimization in clinical utility, which age cohort&#39;s care delivery framework will you audit first based on the empirical evidence?</span>
+<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-443"><a href="#cb12-443" aria-hidden="true" tabindex="-1"></a><span class="fu"># Week 1 R-Laboratory Synthesis Deliverable</span></span>
+<span id="cb12-444"><a href="#cb12-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-445"><a href="#cb12-445" aria-hidden="true" tabindex="-1"></a>Review the data preprocessing pipeline above. In your own words, explain the operational value of processing data via an irreversible step-by-step pipeline script versus sorting and overwriting cell ranges inside a standard spreadsheet workbook.</span>
+<span id="cb12-446"><a href="#cb12-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-447"><a href="#cb12-447" aria-hidden="true" tabindex="-1"></a>**{end}**</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
