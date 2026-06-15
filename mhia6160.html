@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MHIA 6160 - Course Outline & Research Proposal</title>
+    <title>MHIA 6160 - Course Outline Review</title>
     <link rel="icon" type="image/png" href="mhia6160.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -19,10 +19,9 @@
             align-items: center;
             min-height: 100vh;
         }
-
         .container {
             background-color: #ffffff;
-            max-width: 900px; 
+            max-width: 900px;
             width: 90%;
             padding: 40px;
             border-radius: 8px;
@@ -30,122 +29,256 @@
             text-align: center;
             margin: 40px 0; 
         }
-
         .course-code {
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #6c757d;
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        h1 {
+            font-size: 2.25rem;
+            color: #1a1a1a;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .author {
+            font-size: 1.1rem;
+            color: #495057;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .author-title {
+            font-size: 0.9rem;
+            color: #6c757d;
             display: block;
         }
-
-        h1 {
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: #343a40;
+        .divider {
+            height: 2px;
+            width: 60px;
+            background-color: #0062AC; /* Schulich Blue Accent */
+            margin: 0 auto 30px auto;
         }
-
-        .welcome-text {
-            font-size: 1.1rem;
+        .description {
+            font-size: 1.05rem;
             line-height: 1.6;
             color: #495057;
-            margin-bottom: 25px;
             text-align: left;
-        }
-
-        .reviewer-note {
-            background-color: #e9ecef;
+            margin-bottom: 30px;
+            background-color: #f8f9fa;
             padding: 20px;
-            border-left: 4px solid #0d6efd;
-            border-radius: 4px;
-            text-align: left;
-            margin-bottom: 35px;
+            border-left: 4px solid #0062AC;
+            border-radius: 0 4px 4px 0;
         }
-
-        .reviewer-note p {
-            margin-top: 0;
-            font-weight: bold;
-            color: #212529;
-        }
-
-        .reviewer-note ul {
+        .description ul {
+            margin-top: 10px;
             margin-bottom: 0;
             padding-left: 20px;
-            color: #495057;
-            line-height: 1.6;
         }
-
-        .reviewer-note li {
+        .description li {
             margin-bottom: 10px;
         }
-
-        .reviewer-note li:last-child {
+        .description li:last-child {
             margin-bottom: 0;
         }
-
-        /* Flexbox container for side-by-side buttons */
-        .button-container {
+        /* Button Layout Wrapper */
+        .button-group {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap; /* Allows buttons to stack on very small mobile screens */
+            gap: 20px; /* Added gap for side-by-side layout */
+            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
-
-        .btn {
+        /* Schulich-Branded Action Button */
+        .btn-review {
             display: inline-block;
-            background-color: #0d6efd;
+            width: 100%;
+            max-width: 320px;
+            background-color: #0062AC;
             color: #ffffff;
             text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 5px;
             font-size: 1.1rem;
             font-weight: 600;
+            padding: 16px 24px;
+            border-radius: 6px;
             transition: background-color 0.2s ease, transform 0.1s ease;
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 98, 172, 0.2);
+            box-sizing: border-box;
         }
-
-        .btn:hover {
-            background-color: #0b5ed7;
+        .btn-review:hover {
+            background-color: #004b84;
         }
-
-        .btn:active {
+        .btn-review:active {
             transform: scale(0.98);
         }
-
-        .btn i {
+        .btn-review i {
             margin-right: 8px;
+        }
+        /* --- 2x3 Responsive Matrix Grid --- */
+        .module-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+            gap: 24px;
+            text-align: left;
+        }
+        .module-card {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .module-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 16px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .module-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #0062AC;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            transition: color 0.2s ease;
+        }
+        .module-link:last-child {
+            margin-bottom: 0;
+        }
+        .module-link:hover {
+            color: #004b84;
+            text-decoration: underline;
+        }
+        .module-icon {
+            color: #6c757d;
+            width: 20px;
+            text-align: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        /* Responsive Cascade for Tablets and Smaller Laptops */
+        @media (max-width: 800px) {
+            .module-matrix {
+                grid-template-columns: repeat(2, 1fr); /* Collapses to 2 columns */
+            }
+        }
+        /* Responsive Cascade for Mobile Phones */
+        @media (max-width: 500px) {
+            .module-matrix {
+                grid-template-columns: 1fr; /* Collapses to 1 vertical column */
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <span class="course-code">MHIA 6160</span>
+        <div class="course-code">MHIA 6160 | 1.50 Credits</div>
         <h1>Value and Quality in Healthcare</h1>
-
-        <div class="welcome-text">
-            <p><strong>Welcome to the digital staging area for MHIA 6160: Value and Quality in Healthcare.</strong></p>
+        <div class="author">
+            Dr. Cameron B. Chiarot
+            <span class="author-title">Research Scientist & Adjunct Professor</span>
         </div>
+        <div class="divider"></div>
 
-        <div class="reviewer-note">
-            <p>Note to Reviewers:</p>
+        <div class="description">
+            <p><strong>Welcome to the digital staging area for MHIA 6160: Value and Quality in Healthcare.</strong></p>
+            <p><strong>Note to Reviewers:</strong> This platform serves as the central repository for the evaluation of the Winter 2027 curriculum. Please review the following two core components:</p>
             <ul>
-                <li><strong>Course Materials:</strong> Access the draft syllabus, module architecture, and the interactive technical R-Lab components designed for the course.</li>
+                <li><strong>Course Materials:</strong> Access the draft syllabus, module architecture, and the interactive technical R-Laboratory components designed for the course.</li>
                 <li><strong>Research Proposal:</strong> Access the proposed prospective mixed-methods study investigating the pedagogical impact of integrating the DAEDALUS Explore epidemiological-economic simulation tool with an open-source <em>Code-Along</em> framework.</li>
             </ul>
         </div>
 
-        <div class="button-container">
-            <!-- Replace the href '#' with the actual link to your course outline -->
-            <a href="mhia6160_outline_w27" class="btn"><i class="fas fa-book-open"></i> Course Outline</a>
-            
-            <!-- Replace the href '#' with the actual link to your compiled Quarto PDF -->
-            <a href="rp_mhia6160.pdf" class="btn"><i class="fas fa-file-pdf"></i> Research Proposal</a>
+        <div class="button-group">
+            <a href="mhia6160_outline_w27.pdf" target="_blank" class="btn-review">
+                <i class="fas fa-book-open"></i> Course Outline
+            </a>
+            <a href="rp_mhia6160.pdf" target="_blank" class="btn-review">
+                <i class="fas fa-file-pdf"></i> Research Proposal
+            </a>
+        </div>
+
+        <div class="module-matrix">
+            <div class="module-card">
+                <h3 class="module-heading">Module 1</h3>
+                <a href="week1_introduction.html" target="_blank" class="module-link">
+                    <i class="fa-solid fa-book-open module-icon"></i> Introduction_01
+                </a>
+                <a href="week1_lecture.html" target="_blank" class="module-link">
+                    <i class="fa-solid fa-chalkboard-user module-icon"></i> Lecture_01
+                </a>
+                <a href="week1_r_laboratory.html" target="_blank" class="module-link">
+                    <i class="fa-solid fa-code module-icon"></i> R-Lab_01
+                </a>
+                <a href="week1_evaluation.html" target="_blank" class="module-link">
+                    <i class="fa-solid fa-clipboard-check module-icon"></i> Evaluation_01
+                </a>
+            </div>
+            <div class="module-card">
+                <h3 class="module-heading">Module 2</h3>
+                
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-chalkboard-user module-icon"></i> Lecture_02
+                </a>
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-code module-icon"></i> R-Lab_02
+                
+                </a>
+            </div>
+            <div class="module-card">
+                <h3 class="module-heading">Module 3</h3>
+                
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-chalkboard-user module-icon"></i> Lecture_03
+                </a>
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-code module-icon"></i> R-Lab_03
+                </a>
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-clipboard-check module-icon"></i> Evaluation_02
+                </a>
+            </div>
+            <div class="module-card">
+                <h3 class="module-heading">Module 4</h3>
+                
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-chalkboard-user module-icon"></i> Lecture_04
+                </a>
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-code module-icon"></i> R-Lab_04
+                </a>
+                
+            </div>
+            <div class="module-card">
+                <h3 class="module-heading">Module 5</h3>
+                
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-chalkboard-user module-icon"></i> Lecture_05
+                </a>
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-code module-icon"></i> R-Lab_05
+                </a>
+                
+            </div>
+            <div class="module-card">
+                <h3 class="module-heading">Module 6</h3>
+                
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-chalkboard-user module-icon"></i> Lecture_06
+                </a>
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-code module-icon"></i> R-Lab_06
+                </a>
+                <a href="#" class="module-link">
+                    <i class="fa-solid fa-clipboard-check module-icon"></i> Evaluation_03
+                </a>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
