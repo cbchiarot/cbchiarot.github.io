@@ -5,6 +5,7 @@ project:
 website:
   title: "Cameron B. Chiarot, MBA, PhD"
   site-url: "https://cbchiarot.github.io"
+  favicon: favicon.png
   description: "Healthcare executive, educator, and health economist (PhD)."
   navbar:
     left:
