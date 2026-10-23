@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Cameron B. Chiarot, MBA, PhD"
+  site-url: "https://cbchiarot.github.io"
+  description: "Healthcare executive, educator, and health economist (PhD)."
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: teaching.qmd
+        text: Teaching
+      - href: cv.qmd
+        text: CV
+    right:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/cameronchiarot
+        aria-label: LinkedIn
+      - icon: mortarboard
+        href: https://scholar.google.com/citations?user=02J5Ti0AAAAJ&hl=en
+        aria-label: Google Scholar
+      - icon: envelope
+        href: mailto:cbchiarot@uwaterloo.ca
+        aria-label: Email
+  page-footer:
+    center: "© 2026 Cameron B. Chiarot"
+
+format:
+  html:
+    theme: [litera, styles.scss]
+    toc: false
+    page-layout: article
+    smooth-scroll: true

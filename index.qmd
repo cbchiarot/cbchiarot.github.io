@@ -1,0 +1,25 @@
+---
+title: "Cameron B. Chiarot[, MBA, PhD]{.creds}"
+subtitle: "Healthcare Executive | Educator | Health Economist"
+---
+
+Healthcare executive, educator, and health economist (PhD) with 20 years of senior leadership experience in Canadian public-sector health organizations. I apply quantitative modelling to assess health system resilience, access, and value, and educate health leaders to make more informed, evidence-based decisions.
+
+Health systems frequently discuss access; however, what is typically measured is utilization. The gap between the two is where systems fail people, and it is where my work is focused.
+
+::: {.pillar}
+### Leadership
+Senior roles across hospitals, health authorities, and research institutes, including capital programs of up to CAD \$100 million, new health facilities, and not-for-profit governance.
+:::
+
+::: {.pillar}
+### Research
+Health system resilience to climate shocks in Western Province, Zambia, and the economics of the HPTN 071 (PopART) trial with Imperial College London. [More on my research →](research.qmd)
+:::
+
+::: {.pillar}
+### Teaching
+Adjunct Professor at the Schulich School of Business, where I designed and teach Value and Quality in Healthcare (MHIA 6160), and Sessional Lecturer in the Master of Public Health program at the University of Waterloo. [More on my teaching →](teaching.qmd)
+:::
+
+I am seeking leadership opportunities in applied research, innovation, and education across public agencies, health systems, research institutes, universities, and colleges. The best way to reach me is by [email](mailto:cbchiarot@uwaterloo.ca) or [LinkedIn](https://www.linkedin.com/in/cameronchiarot).

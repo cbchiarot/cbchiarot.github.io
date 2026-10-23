@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "I teach health professionals to make better decisions with evidence. Most of my students will become managers, analysts, clinicians, and executives rather than researchers, so I focus on asking the right question of the data, reading the answer critically, and explaining it clearly to the person who has to decide."
+  },
+  {
+    "objectID": "teaching.html#value-and-quality-in-healthcare-mhia-6160",
+    "href": "teaching.html#value-and-quality-in-healthcare-mhia-6160",
+    "title": "Teaching",
+    "section": "Value and Quality in Healthcare (MHIA 6160)",
+    "text": "Value and Quality in Healthcare (MHIA 6160)\nA graduate course I designed for the Master of Health Industry Administration program at the Schulich School of Business, York University, first offered in Winter 2027. It is built on three ideas:\n\nA dual lens. Each module is examined from the public-system perspective (equity, the Canada Health Act, regulation) and the industry perspective (efficiency, innovation, fiscal sustainability).\nCode-along R laboratories. Students work from provided scripts, adjust parameters, and interpret the output, building data literacy for leadership without becoming programmers. All software is free and open source.\nA simulation capstone. Student teams respond to a simulated epidemic using DAEDALUS, an open-access model from the Jameel Institute at Imperial College London, and present their strategy to a mock national cabinet.\n\nView the course materials →"
+  },
+  {
+    "objectID": "teaching.html#courses-taught",
+    "href": "teaching.html#courses-taught",
+    "title": "Teaching",
+    "section": "Courses taught",
+    "text": "Courses taught\n\n\n\n\n\n\n\n\nCourse\nInstitution\nLevel\n\n\n\n\nValue and Quality in Healthcare (MHIA 6160)\nSchulich School of Business, York University\nGraduate\n\n\nPublic Health and the Environment (HLTH 604)\nUniversity of Waterloo\nGraduate (MPH)\n\n\nHealth Economics and Public Health (HLTH 632)\nUniversity of Waterloo\nGraduate (MPH)\n\n\nFinancial Practices for Health Care Organizations (FIN8230)\nConestoga College\nUndergraduate\n\n\nEngaging Collaboration in Health Care Management (MGMT8165)\nConestoga College\nUndergraduate\n\n\nEntrepreneurship in Health Care (ENTR8260)\nConestoga College\nUndergraduate\n\n\n\nI have also supervised three MSc graduate research assistants at the University of Waterloo and received the Faculty of Health Teaching Assistant Award (2022)."
+  },
+  {
+    "objectID": "teaching.html#teaching-dossier",
+    "href": "teaching.html#teaching-dossier",
+    "title": "Teaching",
+    "section": "Teaching dossier",
+    "text": "Teaching dossier\nMy teaching dossier sets out my teaching philosophy, course design, and student evaluations in full.\nDownload the teaching dossier (PDF)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cameron B. Chiarot, MBA, PhD",
+    "section": "",
+    "text": "Healthcare executive, educator, and health economist (PhD) with 20 years of senior leadership experience in Canadian public-sector health organizations. I apply quantitative modelling to assess health system resilience, access, and value, and educate health leaders to make more informed, evidence-based decisions.\nHealth systems frequently discuss access; however, what is typically measured is utilization. The gap between the two is where systems fail people, and it is where my work is focused.\n\nLeadership\nSenior roles across hospitals, health authorities, and research institutes, including capital programs of up to CAD $100 million, new health facilities, and not-for-profit governance.\n\n\nResearch\nHealth system resilience to climate shocks in Western Province, Zambia, and the economics of the HPTN 071 (PopART) trial with Imperial College London. More on my research →\n\n\nTeaching\nAdjunct Professor at the Schulich School of Business, where I designed and teach Value and Quality in Healthcare (MHIA 6160), and Sessional Lecturer in the Master of Public Health program at the University of Waterloo. More on my teaching →\n\nI am seeking leadership opportunities in applied research, innovation, and education across public agencies, health systems, research institutes, universities, and colleges. The best way to reach me is by email or LinkedIn."
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum Vitae",
+    "section": "",
+    "text": "I bring 20 years of senior leadership in Canadian hospitals, health authorities, and research institutes, including Chief Innovation Officer at the Health Sciences Centre in Winnipeg and senior roles at the Hotchkiss Brain Institute and Princess Margaret Hospital, together with a PhD in health economics and epidemiology & biostatistics from the University of Waterloo and an MBA from the Schulich School of Business.\nDownload my CV (PDF)"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "My research asks whether health systems deliver care to the people who need it, and how well they hold up under pressure. I distinguish potential access, the services people could in principle reach, from realized access, the services they actually use, and I model what drives the gap between the two: distance, cost, climate shocks, and the capacity of the system itself."
+  },
+  {
+    "objectID": "research.html#current-work",
+    "href": "research.html#current-work",
+    "title": "Research",
+    "section": "Current work",
+    "text": "Current work\nHealth system resilience in Western Province, Zambia (University of Waterloo, 2025 – present). Using routine health information system data, I measure how floods, droughts, and other health system stressors affect the use of essential services, including maternal and child health care, and I develop methods to strengthen malaria surveillance data. This work grew out of my doctoral thesis, Health System Resilience for Climate Change Adaptation.\nThe economics of HIV care in the HPTN 071 (PopART) trial (Imperial College London, 2026 – present). With colleagues at Imperial College London, I model equity, economies of scale, and the costs of health care utilization in a cluster-randomized trial in Zambia and South Africa."
+  },
+  {
+    "objectID": "research.html#methods",
+    "href": "research.html#methods",
+    "title": "Research",
+    "section": "Methods",
+    "text": "Methods\nFrequentist and Bayesian modelling; econometrics, including interrupted time series and difference-in-differences; time-series forecasting; structural equation modelling; and geospatial analysis, including catchment-area and location-allocation methods. I work mainly in R."
+  },
+  {
+    "objectID": "research.html#selected-publications",
+    "href": "research.html#selected-publications",
+    "title": "Research",
+    "section": "Selected publications",
+    "text": "Selected publications\n\n\nChiarot, C.B., Janes, C.R., Goma, F., Grépin, K.A., Torres-Espin, A., Mroz, E.J., Smith, M.W., & Butt, Z.A. (2026). Health system resilience: quantifying the dynamic impact of environmental shocks on health service utilization using an interrupted time series and time-series forecasting approach in Western Province, Zambia. The Journal of Climate Change and Health, 28, 100672. doi:10.1016/j.joclim.2026.100672\nChiarot, C.B., Janes, C.R., Abdullah, A.Y.M., Goma, F., Phiri, M., Singini, D., Zulu, R., & Butt, Z.A. (2025). Evaluating the concept of access as a critical dimension of universal health coverage in the context of rural communities of Western Province, Zambia. SSM – Health Systems, 5, 100106. doi:10.1016/j.ssmhs.2025.100106\nLiyanage, S., Saqib, K., Khan, A.F., Thobani, T.R., Tang, W.-C., Chiarot, C.B., AlShurman, B.A., & Butt, Z.A. (2022). Prevalence of anxiety in university students during the COVID-19 pandemic: a systematic review. International Journal of Environmental Research and Public Health, 19(1), 62. doi:10.3390/ijerph19010062\n\n\nSeveral further manuscripts on climate shocks, malaria surveillance, maternal health care, and the economics of HIV care are under review or in preparation. Earlier work in medical imaging physics appeared in Physics in Medicine and Biology, Magnetic Resonance in Medicine, and Medical Physics. For a full list, see my Google Scholar profile or my CV."
+  }
+]

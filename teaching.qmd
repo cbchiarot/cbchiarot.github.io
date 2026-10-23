@@ -1,0 +1,34 @@
+---
+title: "Teaching"
+---
+
+I teach health professionals to make better decisions with evidence. Most of my students will become managers, analysts, clinicians, and executives rather than researchers, so I focus on asking the right question of the data, reading the answer critically, and explaining it clearly to the person who has to decide.
+
+## Value and Quality in Healthcare (MHIA 6160)
+
+A graduate course I designed for the Master of Health Industry Administration program at the Schulich School of Business, York University, first offered in Winter 2027. It is built on three ideas:
+
+- **A dual lens.** Each module is examined from the public-system perspective (equity, the Canada Health Act, regulation) and the industry perspective (efficiency, innovation, fiscal sustainability).
+- **Code-along R laboratories.** Students work from provided scripts, adjust parameters, and interpret the output, building data literacy for leadership without becoming programmers. All software is free and open source.
+- **A simulation capstone.** Student teams respond to a simulated epidemic using DAEDALUS, an open-access model from the Jameel Institute at Imperial College London, and present their strategy to a mock national cabinet.
+
+[View the course materials →](https://cbchiarot.github.io/mhia6160/)
+
+## Courses taught
+
+| Course | Institution | Level |
+|---|---|---|
+| Value and Quality in Healthcare (MHIA 6160) | Schulich School of Business, York University | Graduate |
+| Public Health and the Environment (HLTH 604) | University of Waterloo | Graduate (MPH) |
+| Health Economics and Public Health (HLTH 632) | University of Waterloo | Graduate (MPH) |
+| Financial Practices for Health Care Organizations (FIN8230) | Conestoga College | Undergraduate |
+| Engaging Collaboration in Health Care Management (MGMT8165) | Conestoga College | Undergraduate |
+| Entrepreneurship in Health Care (ENTR8260) | Conestoga College | Undergraduate |
+
+I have also supervised three MSc graduate research assistants at the University of Waterloo and received the Faculty of Health Teaching Assistant Award (2022).
+
+## Teaching dossier
+
+My teaching dossier sets out my teaching philosophy, course design, and student evaluations in full.
+
+[Download the teaching dossier (PDF)](files/chiarot_teaching_dossier.pdf){.btn .btn-outline-primary .download}
