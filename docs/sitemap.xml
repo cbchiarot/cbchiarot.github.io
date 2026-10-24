@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://cbchiarot.github.io/cv.html</loc>
+    <lastmod>2026-10-23T13:34:04.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cbchiarot.github.io/research.html</loc>
+    <lastmod>2026-10-23T13:34:09.000Z</lastmod>
+  </url>
+  <url>
     <loc>https://cbchiarot.github.io/teaching.html</loc>
-    <lastmod>2026-10-23T13:33:32.181Z</lastmod>
+    <lastmod>2026-10-23T13:33:32.000Z</lastmod>
   </url>
   <url>
     <loc>https://cbchiarot.github.io/index.html</loc>
     <lastmod>2026-10-24T00:35:03.181Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cbchiarot.github.io/cv.html</loc>
-    <lastmod>2026-10-23T13:34:04.890Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cbchiarot.github.io/research.html</loc>
-    <lastmod>2026-10-23T13:34:09.259Z</lastmod>
   </url>
 </urlset>

@@ -1,40 +1,5 @@
 [
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
-    "section": "",
-    "text": "I teach health professionals to make better decisions with evidence. Most of my students will become managers, analysts, clinicians, and executives rather than researchers, so I focus on asking the right question of the data, reading the answer critically, and explaining it clearly to the person who has to decide."
-  },
-  {
-    "objectID": "teaching.html#value-and-quality-in-healthcare-mhia-6160",
-    "href": "teaching.html#value-and-quality-in-healthcare-mhia-6160",
-    "title": "Teaching",
-    "section": "Value and Quality in Healthcare (MHIA 6160)",
-    "text": "Value and Quality in Healthcare (MHIA 6160)\nA graduate course I designed for the Master of Health Industry Administration program at the Schulich School of Business, York University, first offered in Winter 2027. It is built on three ideas:\n\nA dual lens. Each module is examined from the public-system perspective (equity, the Canada Health Act, regulation) and the industry perspective (efficiency, innovation, fiscal sustainability).\nCode-along R laboratories. Students work from provided scripts, adjust parameters, and interpret the output, building data literacy for leadership without becoming programmers. All software is free and open source.\nA simulation capstone. Student teams respond to a simulated epidemic using DAEDALUS, an open-access model from the Jameel Institute at Imperial College London, and present their strategy to a mock national cabinet.\n\nView the course materials →"
-  },
-  {
-    "objectID": "teaching.html#courses-taught",
-    "href": "teaching.html#courses-taught",
-    "title": "Teaching",
-    "section": "Courses taught",
-    "text": "Courses taught\n\n\n\n\n\n\n\n\nCourse\nInstitution\nLevel\n\n\n\n\nValue and Quality in Healthcare (MHIA 6160)\nSchulich School of Business, York University\nGraduate\n\n\nPublic Health and the Environment (HLTH 604)\nUniversity of Waterloo\nGraduate (MPH)\n\n\nHealth Economics and Public Health (HLTH 632)\nUniversity of Waterloo\nGraduate (MPH)\n\n\nFinancial Practices for Health Care Organizations (FIN8230)\nConestoga College\nUndergraduate\n\n\nEngaging Collaboration in Health Care Management (MGMT8165)\nConestoga College\nUndergraduate\n\n\nEntrepreneurship in Health Care (ENTR8260)\nConestoga College\nUndergraduate\n\n\n\nI have also supervised three MSc graduate research assistants at the University of Waterloo and received the Faculty of Health Teaching Assistant Award (2022)."
-  },
-  {
-    "objectID": "teaching.html#teaching-dossier",
-    "href": "teaching.html#teaching-dossier",
-    "title": "Teaching",
-    "section": "Teaching dossier",
-    "text": "Teaching dossier\nMy teaching dossier sets out my teaching philosophy, course design, and student evaluations in full.\nDownload the teaching dossier (PDF)"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Cameron B. Chiarot, MBA, PhD",
-    "section": "",
-    "text": "I am a healthcare executive, educator, and health economist with 20 years of senior leadership experience in Canadian public-sector health organizations. I use quantitative modelling to examine health system resilience, access, and value, and educate health leaders to support informed, evidence-based decision-making.\nHealth systems frequently discuss access; however, they typically measure utilization. The gap between the two is where systems fail people, and it is where my work is focused.\n\nLeadership\nSenior leadership roles across hospitals, health authorities, and research institutes, encompassing capital programs valued at up to CAD $100 million, the development of new health facilities, and governance in the not-for-profit sector.\n\n\nResearch\nHealth system resilience to climate shocks in Western Province, Zambia, and the economics of the HPTN 071 (PopART) trial with Imperial College London. More on my research →\n\n\nTeaching\nAdjunct Professor at the Schulich School of Business, where I designed and teach Value and Quality in Healthcare (MHIA 6160), and Sessional Lecturer in the Master of Public Health program at the University of Waterloo. More on my teaching →\n\nI am seeking leadership opportunities in applied research, innovation, and education across public agencies, health systems, research institutes, universities, and colleges. The best way to reach me is by email or LinkedIn."
-  },
-  {
     "objectID": "cv.html",
     "href": "cv.html",
     "title": "Curriculum Vitae",
@@ -68,5 +33,40 @@
     "title": "Research",
     "section": "Selected publications",
     "text": "Selected publications\n\n\nChiarot, C.B., Janes, C.R., Goma, F., Grépin, K.A., Torres-Espin, A., Mroz, E.J., Smith, M.W., & Butt, Z.A. (2026). Health system resilience: quantifying the dynamic impact of environmental shocks on health service utilization using an interrupted time series and time-series forecasting approach in Western Province, Zambia. The Journal of Climate Change and Health, 28, 100672. doi:10.1016/j.joclim.2026.100672\nChiarot, C.B., Janes, C.R., Abdullah, A.Y.M., Goma, F., Phiri, M., Singini, D., Zulu, R., & Butt, Z.A. (2025). Evaluating the concept of access as a critical dimension of universal health coverage in the context of rural communities of Western Province, Zambia. SSM – Health Systems, 5, 100106. doi:10.1016/j.ssmhs.2025.100106\nLiyanage, S., Saqib, K., Khan, A.F., Thobani, T.R., Tang, W.-C., Chiarot, C.B., AlShurman, B.A., & Butt, Z.A. (2022). Prevalence of anxiety in university students during the COVID-19 pandemic: a systematic review. International Journal of Environmental Research and Public Health, 19(1), 62. doi:10.3390/ijerph19010062\n\n\nSeveral further manuscripts on climate shocks, malaria surveillance, maternal health care, and the economics of HIV care are under review or in preparation. Earlier work in medical imaging physics appeared in Physics in Medicine and Biology, Magnetic Resonance in Medicine, and Medical Physics. For a full list, see my Google Scholar profile or my CV."
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "I teach health professionals to make better decisions with evidence. Most of my students will become managers, analysts, clinicians, and executives rather than researchers, so I focus on asking the right question of the data, reading the answer critically, and explaining it clearly to the person who has to decide."
+  },
+  {
+    "objectID": "teaching.html#value-and-quality-in-healthcare-mhia-6160",
+    "href": "teaching.html#value-and-quality-in-healthcare-mhia-6160",
+    "title": "Teaching",
+    "section": "Value and Quality in Healthcare (MHIA 6160)",
+    "text": "Value and Quality in Healthcare (MHIA 6160)\nA graduate course I designed for the Master of Health Industry Administration program at the Schulich School of Business, York University, first offered in Winter 2027. It is built on three ideas:\n\nA dual lens. Each module is examined from the public-system perspective (equity, the Canada Health Act, regulation) and the industry perspective (efficiency, innovation, fiscal sustainability).\nCode-along R laboratories. Students work from provided scripts, adjust parameters, and interpret the output, building data literacy for leadership without becoming programmers. All software is free and open source.\nA simulation capstone. Student teams respond to a simulated epidemic using DAEDALUS, an open-access model from the Jameel Institute at Imperial College London, and present their strategy to a mock national cabinet.\n\nView the course materials →"
+  },
+  {
+    "objectID": "teaching.html#courses-taught",
+    "href": "teaching.html#courses-taught",
+    "title": "Teaching",
+    "section": "Courses taught",
+    "text": "Courses taught\n\n\n\n\n\n\n\n\nCourse\nInstitution\nLevel\n\n\n\n\nValue and Quality in Healthcare (MHIA 6160)\nSchulich School of Business, York University\nGraduate\n\n\nPublic Health and the Environment (HLTH 604)\nUniversity of Waterloo\nGraduate (MPH)\n\n\nHealth Economics and Public Health (HLTH 632)\nUniversity of Waterloo\nGraduate (MPH)\n\n\nFinancial Practices for Health Care Organizations (FIN8230)\nConestoga College\nUndergraduate\n\n\nEngaging Collaboration in Health Care Management (MGMT8165)\nConestoga College\nUndergraduate\n\n\nEntrepreneurship in Health Care (ENTR8260)\nConestoga College\nUndergraduate\n\n\n\nI have also supervised three MSc graduate research assistants at the University of Waterloo and received the Faculty of Health Teaching Assistant Award (2022)."
+  },
+  {
+    "objectID": "teaching.html#teaching-dossier",
+    "href": "teaching.html#teaching-dossier",
+    "title": "Teaching",
+    "section": "Teaching dossier",
+    "text": "Teaching dossier\nMy teaching dossier sets out my teaching philosophy, course design, and student evaluations in full.\nDownload the teaching dossier (PDF)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cameron B. Chiarot, MBA, PhD",
+    "section": "",
+    "text": "I am a healthcare executive, educator, and health economist with 20 years of senior leadership experience in Canadian public-sector health organizations. I use quantitative modelling to examine health system resilience, access, and value, and educate health leaders to support informed, evidence-based decision-making.\nHealth systems frequently discuss access; however, they typically measure utilization. The gap between the two is where systems fail people, and it is where my work is focused.\n\nLeadership\nSenior leadership roles across hospitals, health authorities, and research institutes, encompassing capital programs valued at up to CAD $100 million, the development of new health facilities, and governance in the not-for-profit sector.\n\n\nResearch\nHealth system resilience to climate shocks in Western Province, Zambia, and the economics of the HPTN 071 (PopART) trial with Imperial College London. More on my research →\n\n\nTeaching\nAdjunct Professor at the Schulich School of Business, where I designed and teach Value and Quality in Healthcare (MHIA 6160), and Sessional Lecturer in the Master of Public Health program at the University of Waterloo. More on my teaching →\n\nI am seeking leadership opportunities in applied research, innovation, and education across public agencies, health systems, research institutes, universities, and colleges. The best way to reach me is by email or LinkedIn."
   }
 ]
