@@ -1,8 +1,8 @@
 /*-- scss:defaults --*/
 $primary: #1f3a5f;
 $link-color: #1f3a5f;
-$navbar-bg: #ffffff;
-$navbar-fg: #1f3a5f;
+$navbar-bg: #1f3a5f;
+$navbar-fg: #ffffff;
 $body-color: #1a1a1a;
 
 /*-- scss:rules --*/
@@ -10,8 +10,8 @@ body { line-height: 1.65; }
 h1.title { font-size: 2.1rem; }
 .subtitle.lead { color: #555; font-size: 1.1rem; }
 h2 { border-bottom: none; margin-top: 2rem; font-size: 1.35rem; }
-.pillar { border-left: 3px solid #1f3a5f; padding: 0.2rem 0 0.2rem 1rem; margin: 1.2rem 0; }
+.pillar { background-color: #f8f9fa; border-left: 4px solid #1f3a5f; border-radius: 0 4px 4px 0; padding: 1rem 1.25rem; margin: 1.2rem 0; }
 .pillar h3 { margin-top: 0; font-size: 1.1rem; }
-.pubs li { margin-bottom: 0.6rem; }
+.pillar p:last-child { margin-bottom: 0; }
 .download { display: inline-block; margin: 0.3rem 0.6rem 0.3rem 0; }
 .creds { font-size: 0.55em; font-weight: normal; }
