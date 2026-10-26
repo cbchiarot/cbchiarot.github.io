@@ -32,7 +32,7 @@ website:
 
 format:
   html:
-    theme: [litera, styles.scss]
+    theme: [cosmo, styles.scss]
     toc: false
     page-layout: article
     smooth-scroll: true

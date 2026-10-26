@@ -2,24 +2,18 @@
 title: "Research"
 ---
 
-My research asks whether health systems deliver care to the people who need it, and how well they hold up under pressure. I distinguish **potential access**, the services people could in principle reach, from **realized access**, the services they actually use, and I model what drives the gap between the two: distance, cost, climate shocks, and the capacity of the system itself.
+My research examines whether health systems provide care to those who need it and how effectively they withstand periods of macroeconomic shocks and microeconomic stressors. I distinguish between **potential access**, the services people could, in principle, reach, and **realized access**, the services they actually use. I also model the factors that contribute to the gap between the two, including the impacts of climate change, infectious diseases, and health system capacity.
 
 ## Current work
 
-**Health system resilience in Western Province, Zambia** (University of Waterloo, 2025 – present). Using routine health information system data, I measure how floods, droughts, and other health system stressors affect the use of essential services, including maternal and child health care, and I develop methods to strengthen malaria surveillance data. This work grew out of my doctoral thesis, *Health System Resilience for Climate Change Adaptation*.
+**Health System Resilience in Western Province, Zambia** (University of Waterloo, 2025–present). Using routine health information system data, I examine how seasonal flooding and other health system stressors affect the utilization of essential health care services, including maternal and child health services, infectious disease care, and general outpatient services.
 
-**The economics of HIV care in the HPTN 071 (PopART) trial** (Imperial College London, 2026 – present). With colleagues at Imperial College London, I model equity, economies of scale, and the costs of health care utilization in a cluster-randomized trial in Zambia and South Africa.
+**The Economics of HIV Care in the HPTN 071 (PopART) Trial** (Imperial College London, 2026–present). In collaboration with colleagues at Imperial College London, I model equity, economies of scale, and health care utilization costs in a cluster-randomized trial conducted in Zambia and South Africa.
 
 ## Methods
 
-Frequentist and Bayesian modelling; econometrics, including interrupted time series and difference-in-differences; time-series forecasting; structural equation modelling; and geospatial analysis, including catchment-area and location-allocation methods. I work mainly in R.
+My expertise includes frequentist and Bayesian modelling; econometrics, including interrupted time-series and difference-in-differences analyses; time-series forecasting; structural equation modelling; and geospatial analysis, including catchment-area and location-allocation methods. I primarily use R in my workflow.
 
-## Selected publications
+## Publications
 
-::: {.pubs}
-- **Chiarot, C.B.**, Janes, C.R., Goma, F., Grépin, K.A., Torres-Espin, A., Mroz, E.J., Smith, M.W., & Butt, Z.A. (2026). Health system resilience: quantifying the dynamic impact of environmental shocks on health service utilization using an interrupted time series and time-series forecasting approach in Western Province, Zambia. *The Journal of Climate Change and Health*, 28, 100672. [doi:10.1016/j.joclim.2026.100672](https://doi.org/10.1016/j.joclim.2026.100672)
-- **Chiarot, C.B.**, Janes, C.R., Abdullah, A.Y.M., Goma, F., Phiri, M., Singini, D., Zulu, R., & Butt, Z.A. (2025). Evaluating the concept of access as a critical dimension of universal health coverage in the context of rural communities of Western Province, Zambia. *SSM – Health Systems*, 5, 100106. [doi:10.1016/j.ssmhs.2025.100106](https://doi.org/10.1016/j.ssmhs.2025.100106)
-- Liyanage, S., Saqib, K., Khan, A.F., Thobani, T.R., Tang, W.-C., **Chiarot, C.B.**, AlShurman, B.A., & Butt, Z.A. (2022). Prevalence of anxiety in university students during the COVID-19 pandemic: a systematic review. *International Journal of Environmental Research and Public Health*, 19(1), 62. [doi:10.3390/ijerph19010062](https://doi.org/10.3390/ijerph19010062)
-:::
-
-Several further manuscripts on climate shocks, malaria surveillance, maternal health care, and the economics of HIV care are under review or in preparation. Earlier work in medical imaging physics appeared in *Physics in Medicine and Biology*, *Magnetic Resonance in Medicine*, and *Medical Physics*. For a full list, see my [Google Scholar profile](https://scholar.google.com/citations?user=02J5Ti0AAAAJ&hl=en) or my [CV](cv.qmd).
+Several manuscripts addressing climate shocks, malaria surveillance, maternal health care, and the economics of HIV care are currently under review or in preparation. A list of my publications is available on my [Google Scholar profile](https://scholar.google.com/citations?user=02J5Ti0AAAAJ&hl=en).

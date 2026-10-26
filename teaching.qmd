@@ -2,15 +2,11 @@
 title: "Teaching"
 ---
 
-I teach health professionals to make better decisions with evidence. Most of my students will become managers, analysts, clinicians, and executives rather than researchers, so I focus on asking the right question of the data, reading the answer critically, and explaining it clearly to the person who has to decide.
+I teach health professionals to make better-informed decisions using evidence. Most of my students will become managers, analysts, clinicians, and executives rather than researchers. Accordingly, I focus on helping them ask the right questions of data, critically interpret the answers, and communicate their findings clearly to the people responsible for making decisions.
 
 ## Value and Quality in Healthcare (MHIA 6160)
 
-A graduate course I designed for the Master of Health Industry Administration program at the Schulich School of Business, York University, first offered in Winter 2027. It is built on three ideas:
-
-- **A dual lens.** Each module is examined from the public-system perspective (equity, the Canada Health Act, regulation) and the industry perspective (efficiency, innovation, fiscal sustainability).
-- **Code-along R laboratories.** Students work from provided scripts, adjust parameters, and interpret the output, building data literacy for leadership without becoming programmers. All software is free and open source.
-- **A simulation capstone.** Student teams respond to a simulated epidemic using DAEDALUS, an open-access model from the Jameel Institute at Imperial College London, and present their strategy to a mock national cabinet.
+A graduate course I designed for the Master of Health Industry Administration program at the Schulich School of Business, York University, first offered in Winter 2027. Each module examines value and quality from both public-system and industry perspectives. Students develop data literacy through guided R laboratories, and the course concludes with a simulation capstone in which teams respond to a simulated epidemic and present their strategies to a mock national cabinet.
 
 [View the course materials →](https://cbchiarot.github.io/mhia6160/)
 
