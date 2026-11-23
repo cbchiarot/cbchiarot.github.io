@@ -1,0 +1,1 @@
+Some photographs say more together than apart. Each series here is a set of three: *red*, a single colour in a black-and-white world; *perspective*, lines and angles that pull the eye upward; and *motion*, the blur of people in transit.

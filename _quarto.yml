@@ -17,6 +17,8 @@ website:
         text: Teaching
       - href: cv.qmd
         text: CV
+      - href: photography.qmd
+        text: Photography
     right:
       - icon: linkedin
         href: https://www.linkedin.com/in/cameronchiarot
