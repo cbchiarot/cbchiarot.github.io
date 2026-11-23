@@ -228,8 +228,9 @@ photo_md <- function(row, group) {
   if (nzchar(row$credit))   desc <- paste0(desc, " · ", row$credit)
   desc <- gsub('"', "'", desc)
   alt  <- desc
+  desc_md <- sub("^(\\d+)\\.", "\\1\\\\.", desc)   # "1." -> "1\." so it isn't read as a list
   paste0("![](photos/", row$folder, "/", row$file, ")",
-         '{group="', group, '" description="', desc,
+         '{group="', group, '" description="', desc_md,
          '" fig-alt="', alt, '"}\n\n')
 }
 
