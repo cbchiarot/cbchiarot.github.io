@@ -1,0 +1,286 @@
+---
+title: "nothing is ever black and white"
+author: "Dr. Cameron B. Chiarot"
+engine: knitr
+format:
+  html:
+    css: photography.css
+    lightbox: true
+    page-layout: article
+    embed-resources: false
+    anchor-sections: false
+---
+
+<style>
+/* =========================================================
+   nothing is ever black and white : gallery styles
+   ========================================================= */
+
+/* Hide the "AUTHOR" label above the name (keep the name) */
+.quarto-title-meta-heading {
+    display: none;
+}
+
+/* ---- Tabs: black and grey, no borders ---- */
+.panel-tabset .nav-tabs {
+    border-bottom: none;
+}
+
+.panel-tabset .nav-link {
+    color: #888;
+    font-size: 1.1rem;
+    border: none;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 2rem;
+}
+
+.panel-tabset .nav-link:hover {
+    color: #000;
+}
+
+.panel-tabset .nav-link.active {
+    color: #000;
+    border: none;
+    border-bottom: 2px solid #000;
+    background: transparent;
+}
+
+.panel-tabset .tab-content {
+    border: none;
+    padding: 1rem 0 0 0;
+}
+
+/* ---- Tab _intros and About text ---- */
+
+.tab-intro p {
+    text-align: left;
+}
+
+/* ---- Links: black with a subtle underline ---- */
+.tab-intro a {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-color: #bbb;       /* light grey underline */
+    text-underline-offset: 3px;        /* a little space below the text */
+}
+
+.tab-intro a:hover {
+    color: #555;
+    text-decoration-color: #555;
+}
+
+/* ---- Masonry gallery: photos at natural shape ---- */
+.photo-grid {
+    column-count: 3;
+    column-gap: 12px;
+    margin-top: 1rem;
+}
+
+.photo-grid p {
+    break-inside: avoid;
+    margin: 0 0 12px 0;
+}
+
+/* ---- Series tab: one labelled row of three per series ---- */
+.series-label {
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: #555;
+    margin: 2rem 0 0.5rem 0;
+}
+
+.series-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    align-items: center;
+}
+
+.series-row p {
+    margin: 0;
+}
+
+/* ---- Shared image styling ---- */
+.photo-grid img,
+.series-row img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.photo-grid img:hover,
+.series-row img:hover {
+    opacity: 0.85;
+}
+
+/* ---- Footer (copyright) ---- */
+.site-footer {
+    margin-top: 4rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.site-footer p {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+}
+
+/* ---- About photo: beside the text on desktop, full width on phones ---- */
+.about-photo {
+    float: right;
+    width: 260px;
+    margin: 0 0 1.5rem 2rem;
+}
+
+@media (max-width: 600px) {
+    .about-photo {
+        float: none;
+        width: 100%;
+        margin: 0 0 1.5rem 0;
+    }
+}
+
+/* Prevent the page shifting when tabs change length */
+html {
+    scrollbar-gutter: stable;
+}
+
+/* Switch tabs instantly: no fade animation */
+.panel-tabset .tab-pane.fade {
+    transition: none;
+}
+
+/* Smooth crossfade between pages of the site */
+@view-transition {
+    navigation: auto;
+}
+
+/* ---- Screen sizes ---- */
+
+@media (max-width: 768px) {             /* tablets: 2 columns */
+    .photo-grid { column-count: 2; }
+}
+
+@media (max-width: 480px) {             /* phones: 1 column */
+    .photo-grid { column-count: 1; }
+    .series-row { grid-template-columns: 1fr; }
+}
+
+</style>
+
+```{r}
+#| label: photo-gallery
+#| echo: false
+#| results: asis
+
+# ---- Settings -------------------------------------------------------------
+
+# Tabs appear in this order. Left side = folder name, right side = tab label.
+categories <- c(
+  zambia        = "zambia",
+  series        = "series",
+  architecture  = "architecture",
+  street_people = "the street",
+  landscape     = "landscape"
+)
+
+# ---- Read the caption sheet ----------------------------------------------
+
+captions <- read.csv("photo_captions.csv", fileEncoding = "UTF-8",
+                     stringsAsFactors = FALSE, na.strings = "")
+captions[is.na(captions)] <- ""
+
+# ---- Check the sheet against the photos folder ---------------------------
+# Any mismatch is shown at the top of the page until you fix it.
+
+on_disk <- list.files("photos", pattern = "\\.jpe?g$",
+                      ignore.case = TRUE, recursive = TRUE)
+in_csv  <- file.path(captions$folder, captions$file)
+
+not_in_csv  <- setdiff(on_disk, in_csv)
+not_on_disk <- setdiff(in_csv, on_disk)
+
+if (length(not_in_csv) > 0) {
+  warning("In photos/ but missing from photo_captions.csv: ",
+          paste(not_in_csv, collapse = ", "))
+}
+if (length(not_on_disk) > 0) {
+  warning("In photo_captions.csv but not found in photos/: ",
+          paste(not_on_disk, collapse = ", "))
+}
+
+# Keep only photos that exist, in tab order, then CSV row order.
+captions <- captions[in_csv %in% on_disk, ]
+captions <- captions[captions$folder %in% names(categories), ]
+captions <- captions[order(match(captions$folder, names(categories)),
+                           seq_len(nrow(captions))), ]
+captions$number <- seq_len(nrow(captions))
+
+# ---- One photo, as Markdown with lightbox caption ------------------------
+
+photo_md <- function(row, group) {
+  desc <- paste0(row$number, ". ", row$title)
+  if (nzchar(row$location)) desc <- paste0(desc, " — ", row$location)
+  if (nzchar(row$credit))   desc <- paste0(desc, " · ", row$credit)
+  desc <- gsub('"', "'", desc)
+  alt  <- desc
+  paste0("![](photos/", row$folder, "/", row$file, ")",
+         '{group="', group, '" description="', desc,
+         '" fig-alt="', alt, '"}\n\n')
+}
+
+# ---- Build the tabs -------------------------------------------------------
+
+cat("::: {.panel-tabset}\n\n")
+
+for (folder in names(categories)) {
+
+  rows <- captions[captions$folder == folder, ]
+
+  cat("## ", categories[[folder]], "\n\n", sep = "")
+
+  intro_file <- file.path("_intros", paste0(folder, ".md"))
+  if (file.exists(intro_file)) {
+    cat("::: {.tab-intro}\n",
+        paste(readLines(intro_file, encoding = "UTF-8", warn = FALSE), collapse = "\n"),
+        "\n:::\n\n", sep = "")
+  }
+
+  if (folder == "series") {
+    # One labelled row per series, in the order they appear in the CSV
+    for (s in unique(rows$series)) {
+      srows <- rows[rows$series == s, ]
+      cat("::: {.series-label}\n", s, "\n:::\n\n", sep = "")
+      cat("::: {.series-row}\n\n")
+      for (i in seq_len(nrow(srows))) {
+        cat(photo_md(srows[i, ], paste0("series-", s)))
+      }
+      cat(":::\n\n")
+    }
+  } else {
+    cat("::: {.photo-grid}\n\n")
+    for (i in seq_len(nrow(rows))) {
+      cat(photo_md(rows[i, ], folder))
+    }
+    cat(":::\n\n")
+  }
+}
+
+# ---- About tab ------------------------------------------------------------
+cat("## about\n\n")
+cat("::: {.tab-intro}\n",
+    paste(readLines("_intros/about.md", encoding = "UTF-8", warn = FALSE), collapse = "\n"),
+    "\n:::\n\n", sep = "")
+
+cat(":::\n\n")   # end tabset
+```
+
+<br> <br>
+
+::: {.site-footer}
+© 2004 Cameron B. Chiarot. All rights reserved. All photographs on this site are protected by copyright. No image may be reproduced, downloaded, distributed, modified or used in any form without prior written permission.
+:::
