@@ -223,14 +223,13 @@ captions$number <- seq_len(nrow(captions))
 # ---- One photo, as Markdown with lightbox caption ------------------------
 
 photo_md <- function(row, group) {
-  desc <- paste0(row$number, ". ", row$title)
-  if (nzchar(row$location)) desc <- paste0(desc, " — ", row$location)
-  if (nzchar(row$credit))   desc <- paste0(desc, " · ", row$credit)
+  desc <- paste0(sprintf("%02d", row$number), " \u00b7 ", row$title)
+  if (nzchar(row$location)) desc <- paste0(desc, " \u2014 ", row$location)
+  if (nzchar(row$credit))   desc <- paste0(desc, " \u00b7 ", row$credit)
   desc <- gsub('"', "'", desc)
   alt  <- desc
-  desc_md <- sub("^(\\d+)\\.", "\\1\\\\.", desc)   # "1." -> "1\." so it isn't read as a list
   paste0("![](photos/", row$folder, "/", row$file, ")",
-         '{group="', group, '" description="', desc_md,
+         '{group="', group, '" description="', desc,
          '" fig-alt="', alt, '"}\n\n')
 }
 
